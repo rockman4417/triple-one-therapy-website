@@ -10,6 +10,7 @@ const NAV_ITEMS = [
   // { label: 'Contact', href: '/contact' },
   // { label: 'Landing Section', href: '/#landing' },
   { label: 'About Section', href: '/#about' },
+  { label: 'Services Section', href: '/#services' },
   { label: 'Contact Section', href: '/#contact' },
 ]
 

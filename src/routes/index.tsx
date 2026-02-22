@@ -76,6 +76,35 @@ function App() {
         </div>
       </section>
 
+      <section id="services" className="section-anchor px-6 py-24">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-10 text-center">
+            <p className="mb-3 text-xs uppercase tracking-[0.24em] text-stone-500">
+              Services
+            </p>
+            <h2 className="text-3xl font-semibold sm:text-4xl">How I Can Support You</h2>
+          </div>
+
+          <div className="grid gap-5 md:grid-cols-2">
+            <article className="rounded-2xl border border-stone-300 bg-stone-50 p-6 sm:p-8">
+              <h3 className="text-2xl font-semibold">Individual Psycho therapy</h3>
+              <p className="mt-3 text-stone-700">
+                One-on-one therapy tailored to your needs and goals.
+              </p>
+              <p className="mt-5 text-lg font-semibold text-stone-900">$130</p>
+            </article>
+
+            <article className="rounded-2xl border border-stone-300 bg-stone-50 p-6 sm:p-8">
+              <h3 className="text-2xl font-semibold">Group Therapy</h3>
+              <p className="mt-3 text-stone-700">
+                Supportive group sessions focused on shared growth and connection.
+              </p>
+              <p className="mt-5 text-lg font-semibold text-stone-900">Price varies</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section id="contact" className="section-anchor px-6 py-24">
         <div className="mx-auto max-w-5xl rounded-2xl border border-stone-300 bg-stone-50 p-8 text-center sm:p-12">
           <p className="mb-3 text-xs uppercase tracking-[0.24em] text-stone-500">
