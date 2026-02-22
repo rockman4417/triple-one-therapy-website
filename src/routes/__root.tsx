@@ -4,8 +4,11 @@ import { TanStackDevtools } from '@tanstack/react-devtools'
 
 import Header from '../components/Header'
 import ParallaxBackground from '../components/ParallaxBackground'
+import UnderConstruction from '../components/UnderConstruction'
 
 import appCss from '../styles.css?url'
+
+const SITE_UNDER_CONSTRUCTION = true
 
 export const Route = createRootRoute({
   head: () => ({
@@ -43,6 +46,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           <Header />
           {children}
         </div>
+        <UnderConstruction isOpen={SITE_UNDER_CONSTRUCTION} />
         <TanStackDevtools
           config={{
             position: 'bottom-right',
