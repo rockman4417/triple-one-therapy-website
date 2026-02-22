@@ -44,6 +44,43 @@ export default function UnderConstruction({
             {message}
           </p>
 
+          <div className="mx-auto mt-8 max-w-lg rounded-2xl border border-stone-300 bg-white/70 p-5">
+            <p className="mb-3 text-center text-xs font-semibold uppercase tracking-[0.2em] text-stone-500">
+              Contact
+            </p>
+            <div className="space-y-2 text-center text-sm text-stone-700 sm:text-base">
+              <p>
+                Email:{' '}
+                <a
+                  href="mailto:triple1therapy@gmail.com"
+                  className="font-medium text-stone-900 underline underline-offset-4 hover:text-amber-700"
+                >
+                  triple1therapy@gmail.com
+                </a>
+              </p>
+              <p>
+                Phone:{' '}
+                <a
+                  href="tel:+15551234567"
+                  className="font-medium text-stone-900 underline underline-offset-4 hover:text-amber-700"
+                >
+                  (806) 707-0111
+                </a>
+              </p>
+              <p>
+                Psychology Today:{' '}
+                <a
+                  href="https://www.psychologytoday.com/us/therapists/catherine-cat-tillinghast-lubbock-tx/906024"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="font-medium text-stone-900 underline underline-offset-4 hover:text-amber-700"
+                >
+                  View Profile
+                </a>
+              </p>
+            </div>
+          </div>
+
           <div className="mt-8 flex items-center justify-center gap-2">
             <span className="h-2.5 w-2.5 rounded-full bg-stone-700/70" />
             <span className="h-2.5 w-2.5 rounded-full bg-stone-700/50" />
