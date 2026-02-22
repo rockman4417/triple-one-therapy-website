@@ -16,7 +16,7 @@ function App() {
   }, [])
 
   return (
-    <main className="bg-stone-100 pt-20 text-stone-900">
+    <main className="bg-transparent pt-20 text-stone-900">
       <section
         id="landing"
         className="section-anchor relative overflow-hidden px-6 py-24"

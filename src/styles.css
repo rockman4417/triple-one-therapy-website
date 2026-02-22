@@ -137,10 +137,85 @@ code {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+    background: radial-gradient(circle at 20% -10%, #f8f3e7 0%, #f3ede0 35%, #ece6d8 100%);
   }
 
   .section-anchor {
     scroll-margin-top: 6rem;
+  }
+}
+
+.parallax-bg {
+  --scroll-y: 0;
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.parallax-gradient {
+  position: absolute;
+  inset: -15%;
+  background:
+    radial-gradient(circle at 12% 14%, rgb(239 198 139 / 45%) 0%, transparent 45%),
+    radial-gradient(circle at 80% 20%, rgb(166 201 189 / 45%) 0%, transparent 42%),
+    radial-gradient(circle at 30% 80%, rgb(180 176 211 / 30%) 0%, transparent 50%);
+  transform: translateY(calc(var(--scroll-y) * -0.05px));
+}
+
+.parallax-layer {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(2px);
+  opacity: 0.5;
+}
+
+.layer-one {
+  top: 10%;
+  left: -8rem;
+  height: 22rem;
+  width: 22rem;
+  background: linear-gradient(140deg, rgb(247 222 180 / 85%), rgb(249 241 225 / 35%));
+  transform: translateY(calc(var(--scroll-y) * -0.11px));
+}
+
+.layer-two {
+  top: 44%;
+  right: -10rem;
+  height: 26rem;
+  width: 26rem;
+  background: linear-gradient(140deg, rgb(166 203 190 / 75%), rgb(220 241 233 / 25%));
+  transform: translateY(calc(var(--scroll-y) * -0.2px));
+}
+
+.layer-three {
+  bottom: -8rem;
+  left: 24%;
+  height: 20rem;
+  width: 20rem;
+  background: linear-gradient(140deg, rgb(187 186 221 / 65%), rgb(228 227 243 / 20%));
+  transform: translateY(calc(var(--scroll-y) * -0.14px));
+}
+
+.parallax-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.3;
+  background-image:
+    linear-gradient(rgb(93 93 93 / 10%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(93 93 93 / 10%) 1px, transparent 1px);
+  background-size: 52px 52px;
+  transform: translateY(calc(var(--scroll-y) * -0.08px));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .parallax-gradient,
+  .layer-one,
+  .layer-two,
+  .layer-three,
+  .parallax-grid {
+    transform: none;
   }
 }
