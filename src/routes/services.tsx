@@ -15,7 +15,7 @@ function ServicesPage() {
 
         <div className="space-y-5">
           <article className="rounded-2xl border border-stone-300 bg-stone-50 p-6 sm:p-8">
-            <h2 className="text-2xl font-semibold">Individual Psycho therapy</h2>
+            <h2 className="text-2xl font-semibold">Individual Psychotherapy</h2>
             <p className="mt-3 text-stone-700">
               One-on-one therapy tailored to your needs and goals.
             </p>

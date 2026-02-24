@@ -87,7 +87,7 @@ function App() {
 
           <div className="grid gap-5 md:grid-cols-2">
             <article className="rounded-2xl border border-stone-300 bg-stone-50 p-6 sm:p-8">
-              <h3 className="text-2xl font-semibold">Individual Psycho therapy</h3>
+              <h3 className="text-2xl font-semibold">Individual Psychotherapy</h3>
               <p className="mt-3 text-stone-700">
                 One-on-one therapy tailored to your needs and goals.
               </p>
