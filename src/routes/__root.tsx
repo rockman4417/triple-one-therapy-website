@@ -8,7 +8,7 @@ import UnderConstruction from '../components/UnderConstruction'
 
 import appCss from '../styles.css?url'
 
-const SITE_UNDER_CONSTRUCTION = true
+const SITE_UNDER_CONSTRUCTION = false
 
 export const Route = createRootRoute({
   head: () => ({
