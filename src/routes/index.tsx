@@ -19,18 +19,18 @@ function App() {
     <main className="bg-transparent pt-20 text-stone-900">
       <section
         id="landing"
-        className="section-anchor relative overflow-hidden px-6 py-24"
+        data-route-background
+        className="section-anchor relative flex min-h-screen items-center overflow-hidden px-6 py-24"
       >
         <div className="mx-auto max-w-5xl text-center">
           <p className="mb-4 text-xs uppercase tracking-[0.24em] text-stone-500">
             Welcome
           </p>
           <h1 className="mb-6 text-4xl font-bold leading-tight sm:text-6xl">
-            Triple One Therapy
+            Depth-oriented therapy for the wandering soul
           </h1>
           <p className="mx-auto max-w-3xl text-lg leading-relaxed text-stone-700 sm:text-xl">
-            A calm, supportive space for individuals and families seeking
-            practical therapy with compassion and clarity.
+            finding alignment in seasons of change.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <a
@@ -49,7 +49,11 @@ function App() {
         </div>
       </section>
 
-      <section id="about" className="section-anchor border-y border-stone-300 px-6 py-24">
+      <section
+        id="about"
+        data-route-background
+        className="section-anchor flex min-h-screen items-center border-y border-stone-300 px-6 py-24"
+      >
         <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-2">
           <div>
             <p className="mb-3 text-xs uppercase tracking-[0.24em] text-stone-500">
@@ -76,7 +80,11 @@ function App() {
         </div>
       </section>
 
-      <section id="services" className="section-anchor px-6 py-24">
+      <section
+        id="services"
+        data-route-background
+        className="section-anchor flex min-h-screen items-center px-6 py-24"
+      >
         <div className="mx-auto max-w-6xl">
           <div className="mb-10 text-center">
             <p className="mb-3 text-xs uppercase tracking-[0.24em] text-stone-500">
@@ -105,7 +113,11 @@ function App() {
         </div>
       </section>
 
-      <section id="contact" className="section-anchor px-6 py-24">
+      <section
+        id="contact"
+        data-route-background
+        className="section-anchor flex min-h-screen items-center px-6 py-24"
+      >
         <div className="mx-auto max-w-5xl rounded-2xl border border-stone-300 bg-stone-50 p-8 text-center sm:p-12">
           <p className="mb-3 text-xs uppercase tracking-[0.24em] text-stone-500">
             Contact

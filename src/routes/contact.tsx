@@ -121,8 +121,8 @@ function ContactPage() {
   }
 
   return (
-    <main className="min-h-screen bg-transparent px-6 pb-16 pt-28 text-stone-900">
-      <div className="mx-auto max-w-3xl">
+    <main className="flex min-h-screen items-center bg-transparent px-6 pb-16 pt-28 text-stone-900">
+      <div className="mx-auto w-full max-w-3xl">
         <p className="mb-4 text-xs uppercase tracking-[0.24em] text-stone-500">
           Contact
         </p>

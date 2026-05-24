@@ -30,8 +30,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-amber-200/70 bg-stone-50/85 backdrop-blur-lg">
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-amber-400/60 to-transparent" />
+      <header className="fixed inset-x-0 top-0 z-50 bg-transparent">
         <div className="mx-auto flex h-24 max-w-6xl items-center justify-between px-4 sm:px-6">
           <Link
             to="/"

@@ -155,13 +155,33 @@ code {
   z-index: 0;
 }
 
+.parallax-image {
+  position: absolute;
+  inset: -6%;
+  background-image: var(--route-bg-image);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: saturate(1.02) contrast(1);
+  opacity: 0.92;
+  transform: translateY(calc(var(--scroll-y) * -0.04px)) scale(1.04);
+  transition: background-image 250ms ease;
+}
+
+.parallax-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgb(248 244 238 / 36%) 0%, rgb(244 239 232 / 20%) 28%, rgb(238 233 225 / 42%) 100%);
+}
+
 .parallax-gradient {
   position: absolute;
   inset: -15%;
   background:
-    radial-gradient(circle at 12% 14%, rgb(239 198 139 / 45%) 0%, transparent 45%),
-    radial-gradient(circle at 80% 20%, rgb(166 201 189 / 45%) 0%, transparent 42%),
-    radial-gradient(circle at 30% 80%, rgb(180 176 211 / 30%) 0%, transparent 50%);
+    radial-gradient(circle at 12% 14%, rgb(239 198 139 / 18%) 0%, transparent 45%),
+    radial-gradient(circle at 80% 20%, rgb(166 201 189 / 18%) 0%, transparent 42%),
+    radial-gradient(circle at 30% 80%, rgb(180 176 211 / 14%) 0%, transparent 50%);
   transform: translateY(calc(var(--scroll-y) * -0.05px));
 }
 
@@ -169,7 +189,7 @@ code {
   position: absolute;
   border-radius: 9999px;
   filter: blur(2px);
-  opacity: 0.5;
+  opacity: 0.18;
 }
 
 .layer-one {
@@ -202,7 +222,7 @@ code {
 .parallax-grid {
   position: absolute;
   inset: 0;
-  opacity: 0.3;
+  opacity: 0.08;
   background-image:
     linear-gradient(rgb(93 93 93 / 10%) 1px, transparent 1px),
     linear-gradient(90deg, rgb(93 93 93 / 10%) 1px, transparent 1px);
@@ -211,6 +231,7 @@ code {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .parallax-image,
   .parallax-gradient,
   .layer-one,
   .layer-two,
