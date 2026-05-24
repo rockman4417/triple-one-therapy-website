@@ -5,19 +5,12 @@ import totLogo from '../assets/totlogo.png'
 
 const NAV_ITEMS = [
   { label: 'Home', href: '/' },
-  // { label: 'About Me', href: '/about' },
-  // { label: 'Services', href: '/services' },
-  // { label: 'Contact', href: '/contact' },
-  // { label: 'Landing Section', href: '/#landing' },
-  { label: 'About Section', href: '/#about' },
-  { label: 'Services Section', href: '/#services' },
-  { label: 'Contact Section', href: '/#contact' },
+  { label: 'About Me', href: '/about' },
+  { label: 'Services', href: '/services' },
+  { label: 'Contact Me', href: '/contact' },
 ]
 
 function isRouteActive(pathname: string, hash: string, href: string) {
-  if (href.startsWith('/#')) {
-    return pathname === '/' && href === `/${hash}`
-  }
   if (href === '/') {
     return pathname === '/'
   }
@@ -62,18 +55,6 @@ export default function Header() {
               const activeClasses = active
                 ? 'bg-stone-900 text-stone-50 shadow-[0_10px_22px_-16px_rgba(17,24,39,0.95)]'
                 : 'text-stone-700 hover:bg-stone-200/80'
-
-              if (item.href.startsWith('/#')) {
-                return (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    className={`${sharedClasses} ${activeClasses}`}
-                  >
-                    {item.label}
-                  </a>
-                )
-              }
 
               return (
                 <Link
@@ -137,19 +118,6 @@ export default function Header() {
             const classes = active
               ? 'rounded-xl bg-stone-900 px-4 py-3 text-sm font-medium text-stone-50'
               : 'rounded-xl border border-transparent px-4 py-3 text-sm font-medium text-stone-700 hover:border-stone-300 hover:bg-stone-200/70'
-
-            if (item.href.startsWith('/#')) {
-              return (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className={classes}
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.label}
-                </a>
-              )
-            }
 
             return (
               <Link

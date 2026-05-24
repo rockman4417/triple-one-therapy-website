@@ -11,7 +11,9 @@ type ContactPayload = {
   website?: string
 }
 
-const submitContactForm = createServerFn({ method: 'POST' }).handler(
+const submitContactForm = createServerFn({ method: 'POST' })
+  .inputValidator((data: ContactPayload) => data)
+  .handler(
   async ({ data }: { data: ContactPayload }) => {
     const name = data?.name?.trim()
     const email = data?.email?.trim()
@@ -121,91 +123,99 @@ function ContactPage() {
   }
 
   return (
-    <main className="flex min-h-screen items-center bg-transparent px-6 pb-16 pt-28 text-stone-900">
-      <div className="mx-auto w-full max-w-3xl">
-        <p className="mb-4 text-xs uppercase tracking-[0.24em] text-stone-500">
-          Contact
-        </p>
-        <h1 className="mb-4 text-4xl font-semibold sm:text-5xl">
-          Reach out to Triple One Therapy
-        </h1>
-        <p className="mb-10 text-lg text-stone-700">
-          Share a bit about what you are looking for and I will follow up
-          within 1-2 business days.
-        </p>
+    <main className="bg-transparent pt-20 text-stone-900">
+      <section
+        id="intro"
+        data-route-background="contact-intro"
+        className="section-anchor flex min-h-screen items-center px-6 py-24"
+      >
+        <div className="mx-auto w-full max-w-3xl">
+          <div className="route-scene mb-10 text-center">
+            <p className="mb-4 text-xs uppercase tracking-[0.24em] text-stone-500">
+              Contact
+            </p>
+            <h1 className="mb-4 text-4xl font-semibold sm:text-5xl">
+              Reach out to Triple One Therapy
+            </h1>
+            <p className="mx-auto max-w-2xl text-lg leading-relaxed text-stone-700">
+              Share a bit about what you are looking for and I will follow up
+              within 1-2 business days.
+            </p>
+          </div>
 
-        <form
-          onSubmit={handleSubmit}
-          className="space-y-5 rounded-2xl border border-stone-300 bg-stone-50 p-6 sm:p-8"
-        >
-          <input
-            type="text"
-            name="website"
-            tabIndex={-1}
-            autoComplete="off"
-            className="hidden"
-            aria-hidden="true"
-          />
-          <label className="block">
-            <span className="mb-2 block text-sm font-medium text-stone-700">
-              Name
-            </span>
+          <form
+            onSubmit={handleSubmit}
+            className="route-card space-y-5 rounded-2xl border border-stone-300 bg-stone-50/94 p-6 sm:p-8"
+          >
             <input
               type="text"
-              name="name"
-              required
-              className="w-full rounded-lg border border-stone-300 bg-white px-4 py-3 text-stone-900 outline-none transition focus:border-stone-500"
-              placeholder="Your name"
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
+              className="hidden"
+              aria-hidden="true"
             />
-          </label>
+            <label className="block">
+              <span className="mb-2 block text-sm font-medium text-stone-700">
+                Name
+              </span>
+              <input
+                type="text"
+                name="name"
+                required
+                className="w-full rounded-lg border border-stone-300 bg-white px-4 py-3 text-stone-900 outline-none transition focus:border-stone-500"
+                placeholder="Your name"
+              />
+            </label>
 
-          <label className="block">
-            <span className="mb-2 block text-sm font-medium text-stone-700">
-              Email
-            </span>
-            <input
-              type="email"
-              name="email"
-              required
-              className="w-full rounded-lg border border-stone-300 bg-white px-4 py-3 text-stone-900 outline-none transition focus:border-stone-500"
-              placeholder="you@email.com"
-            />
-          </label>
+            <label className="block">
+              <span className="mb-2 block text-sm font-medium text-stone-700">
+                Email
+              </span>
+              <input
+                type="email"
+                name="email"
+                required
+                className="w-full rounded-lg border border-stone-300 bg-white px-4 py-3 text-stone-900 outline-none transition focus:border-stone-500"
+                placeholder="you@email.com"
+              />
+            </label>
 
-          <label className="block">
-            <span className="mb-2 block text-sm font-medium text-stone-700">
-              Message
-            </span>
-            <textarea
-              rows={6}
-              name="message"
-              required
-              className="w-full rounded-lg border border-stone-300 bg-white px-4 py-3 text-stone-900 outline-none transition focus:border-stone-500"
-              placeholder="How can I support you?"
-            />
-          </label>
+            <label className="block">
+              <span className="mb-2 block text-sm font-medium text-stone-700">
+                Message
+              </span>
+              <textarea
+                rows={6}
+                name="message"
+                required
+                className="w-full rounded-lg border border-stone-300 bg-white px-4 py-3 text-stone-900 outline-none transition focus:border-stone-500"
+                placeholder="How can I support you?"
+              />
+            </label>
 
-          {result?.ok && (
-            <p className="rounded-lg border border-emerald-300 bg-emerald-50 px-4 py-3 text-sm text-emerald-800">
-              Message sent. I will get back to you soon.
-            </p>
-          )}
+            {result?.ok && (
+              <p className="rounded-lg border border-emerald-300 bg-emerald-50 px-4 py-3 text-sm text-emerald-800">
+                Message sent. I will get back to you soon.
+              </p>
+            )}
 
-          {result && !result.ok && (
-            <p className="rounded-lg border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-800">
-              {result.error ?? 'Unable to send message. Please try again.'}
-            </p>
-          )}
+            {result && !result.ok && (
+              <p className="rounded-lg border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-800">
+                {result.error ?? 'Unable to send message. Please try again.'}
+              </p>
+            )}
 
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="rounded-full bg-stone-900 px-6 py-3 text-sm font-semibold text-stone-50 transition hover:bg-stone-700"
-          >
-            {isSubmitting ? 'Sending...' : 'Send Message'}
-          </button>
-        </form>
-      </div>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="rounded-full bg-stone-900 px-6 py-3 text-sm font-semibold text-stone-50 transition hover:bg-stone-700"
+            >
+              {isSubmitting ? 'Sending...' : 'Send Message'}
+            </button>
+          </form>
+        </div>
+      </section>
     </main>
   )
 }

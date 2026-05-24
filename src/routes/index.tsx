@@ -19,10 +19,10 @@ function App() {
     <main className="bg-transparent pt-20 text-stone-900">
       <section
         id="landing"
-        data-route-background
+        data-route-background="home-landing"
         className="section-anchor relative flex min-h-screen items-center overflow-hidden px-6 py-24"
       >
-        <div className="mx-auto max-w-5xl text-center">
+        <div className="route-scene mx-auto max-w-5xl text-center">
           <p className="mb-4 text-xs uppercase tracking-[0.24em] text-stone-500">
             Welcome
           </p>
@@ -51,11 +51,11 @@ function App() {
 
       <section
         id="about"
-        data-route-background
+        data-route-background="home-about"
         className="section-anchor flex min-h-screen items-center border-y border-stone-300 px-6 py-24"
       >
         <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-2">
-          <div>
+          <div className="route-scene">
             <p className="mb-3 text-xs uppercase tracking-[0.24em] text-stone-500">
               About Me
             </p>
@@ -68,7 +68,7 @@ function App() {
               pace, and lived experience.
             </p>
           </div>
-          <div className="rounded-2xl border border-stone-300 bg-stone-50 p-6">
+          <div className="route-card rounded-2xl border border-stone-300 bg-stone-50 p-6">
             <h3 className="mb-4 text-xl font-semibold">Areas of Focus</h3>
             <ul className="space-y-3 text-stone-700">
               <li>Anxiety and stress management</li>
@@ -82,11 +82,11 @@ function App() {
 
       <section
         id="services"
-        data-route-background
+        data-route-background="home-services"
         className="section-anchor flex min-h-screen items-center px-6 py-24"
       >
         <div className="mx-auto max-w-6xl">
-          <div className="mb-10 text-center">
+          <div className="route-scene mb-10 text-center">
             <p className="mb-3 text-xs uppercase tracking-[0.24em] text-stone-500">
               Services
             </p>
@@ -94,7 +94,7 @@ function App() {
           </div>
 
           <div className="grid gap-5 md:grid-cols-2">
-            <article className="rounded-2xl border border-stone-300 bg-stone-50 p-6 sm:p-8">
+            <article className="route-card rounded-2xl border border-stone-300 bg-stone-50 p-6 sm:p-8">
               <h3 className="text-2xl font-semibold">Individual Psychotherapy</h3>
               <p className="mt-3 text-stone-700">
                 One-on-one therapy tailored to your needs and goals.
@@ -102,7 +102,7 @@ function App() {
               <p className="mt-5 text-lg font-semibold text-stone-900">$130</p>
             </article>
 
-            <article className="rounded-2xl border border-stone-300 bg-stone-50 p-6 sm:p-8">
+            <article className="route-card rounded-2xl border border-stone-300 bg-stone-50 p-6 sm:p-8">
               <h3 className="text-2xl font-semibold">Group Therapy</h3>
               <p className="mt-3 text-stone-700">
                 Supportive group sessions focused on shared growth and connection.
@@ -115,10 +115,10 @@ function App() {
 
       <section
         id="contact"
-        data-route-background
+        data-route-background="home-contact"
         className="section-anchor flex min-h-screen items-center px-6 py-24"
       >
-        <div className="mx-auto max-w-5xl rounded-2xl border border-stone-300 bg-stone-50 p-8 text-center sm:p-12">
+        <div className="route-scene mx-auto max-w-5xl rounded-2xl border border-stone-300 bg-stone-50 p-8 text-center sm:p-12">
           <p className="mb-3 text-xs uppercase tracking-[0.24em] text-stone-500">
             Contact
           </p>
