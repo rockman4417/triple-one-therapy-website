@@ -2,6 +2,8 @@
 
 @import 'tw-animate-css';
 
+@import url('https://googleapis.com');
+
 @custom-variant dark (&:is(.dark *));
 
 body {
@@ -316,6 +318,11 @@ code {
 
 .route-card:nth-child(2) {
   animation-delay: 340ms;
+}
+
+.pinyon {
+  font-family: 'Pinyon Script', cursive;
+  font-style: italic;
 }
 
 @media (prefers-reduced-motion: reduce) {

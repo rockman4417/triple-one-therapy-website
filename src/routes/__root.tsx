@@ -3,7 +3,6 @@ import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 
 import Header from '../components/Header'
-import ParallaxBackground from '../components/ParallaxBackground'
 import UnderConstruction from '../components/UnderConstruction'
 
 import appCss from '../styles.css?url'
@@ -41,7 +40,6 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body className="relative min-h-screen">
-        <ParallaxBackground />
         <div className="relative z-10">
           <Header />
           {children}
