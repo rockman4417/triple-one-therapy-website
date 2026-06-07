@@ -27,7 +27,7 @@ export default function Header() {
         <div className="mx-auto flex h-24 max-w-6xl items-center justify-between px-4 sm:px-6">
           <Link
             to="/"
-            className="group flex items-center gap-3 rounded-full px-2 py-1 transition hover:bg-stone-200/60"
+            className="group flex items-center gap-3 rounded-full bg-[#ede8d1]/88 px-3 py-2 shadow-[0_10px_28px_-22px_rgba(20,18,15,0.55)] backdrop-blur-sm transition hover:bg-[#ede8d1] md:px-4"
           >
             <span className="relative inline-flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border border-amber-200 bg-white shadow-[0_8px_24px_-14px_rgba(120,90,50,0.7)]">
               <span className="absolute inset-0 bg-gradient-to-br from-amber-100/70 via-transparent to-teal-100/50" />
@@ -47,14 +47,14 @@ export default function Header() {
             </span>
           </Link>
 
-          <nav className="hidden items-center gap-2 rounded-full border border-stone-300/80 bg-white/65 p-1.5 shadow-[0_10px_30px_-24px_rgba(15,23,42,0.9)] md:flex">
+          <nav className="hidden items-center gap-2 rounded-full border border-stone-200/60 bg-[#ede8d1]/84 p-1.5 shadow-[0_10px_30px_-24px_rgba(15,23,42,0.9)] backdrop-blur-sm md:flex">
             {NAV_ITEMS.map((item) => {
               const active = isRouteActive(location.pathname, location.hash, item.href)
               const sharedClasses =
                 'rounded-full px-4 py-2 text-sm font-medium transition-all duration-200'
               const activeClasses = active
                 ? 'bg-stone-900 text-stone-50 shadow-[0_10px_22px_-16px_rgba(17,24,39,0.95)]'
-                : 'text-stone-700 hover:bg-stone-200/80'
+                : 'text-stone-700 hover:bg-stone-200/35'
 
               return (
                 <Link
@@ -70,7 +70,7 @@ export default function Header() {
 
           <button
             type="button"
-            className="rounded-full border border-stone-300 bg-white p-2.5 text-stone-700 shadow-sm transition hover:bg-stone-100 md:hidden"
+            className="rounded-full border border-stone-200/60 bg-transparent p-2.5 text-stone-700 transition hover:bg-stone-100/35 md:hidden"
             aria-label="Open navigation menu"
             onClick={() => setIsOpen(true)}
           >

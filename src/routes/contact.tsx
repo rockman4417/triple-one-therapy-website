@@ -2,11 +2,6 @@ import { createFileRoute } from '@tanstack/react-router'
 import { createServerFn, useServerFn } from '@tanstack/react-start'
 import { useState, type FormEvent } from 'react'
 
-import contactBackground from '../assets/backgrounds/contact-placeholder.jpeg'
-import RouteSceneLayout, {
-  type BackgroundScene,
-} from '../components/RouteSceneLayout'
-
 export const Route = createFileRoute('/contact')({ component: ContactPage })
 
 type ContactPayload = {
@@ -14,17 +9,6 @@ type ContactPayload = {
   email: string
   message: string
   website?: string
-}
-
-const scenes: Record<string, BackgroundScene> = {
-  'contact-intro': {
-    kind: 'split',
-    image: contactBackground,
-    color: '#eadfd2',
-    split: 'right',
-    overlay:
-      'linear-gradient(90deg, rgb(255 248 242 / 10%) 0%, rgb(255 248 242 / 28%) 100%)',
-  },
 }
 
 const submitContactForm = createServerFn({ method: 'POST' })
@@ -139,101 +123,98 @@ function ContactPage() {
   }
 
   return (
-    <RouteSceneLayout scenes={scenes} initialSceneId="contact-intro">
-      <main className="bg-transparent pt-20 text-stone-900">
-        <section
-          id="intro"
-          data-route-background="contact-intro"
-          className="section-anchor flex min-h-screen items-center px-6 py-24"
-        >
-          <div className="mx-auto w-full max-w-3xl">
-            <div className="route-scene mb-10 text-center">
-              <p className="mb-4 text-xs uppercase tracking-[0.24em] text-stone-500">
-                Contact
-              </p>
-              <h1 className="mb-4 text-4xl font-semibold sm:text-5xl">
-                Reach out to Triple One Therapy
-              </h1>
-              <p className="mx-auto max-w-2xl text-lg leading-relaxed text-stone-700">
-                Share a bit about what you are looking for and I will follow up
-                within 1-2 business days.
-              </p>
-            </div>
+    <main className="bg-transparent pt-20 text-stone-900">
+      <section
+        id="intro"
+        className="section-anchor flex min-h-screen items-center px-6 py-24"
+      >
+        <div className="mx-auto w-full max-w-3xl">
+          <div className="mb-10 text-center">
+            <p className="mb-4 text-xs uppercase tracking-[0.24em] text-stone-500">
+              Contact
+            </p>
+            <h1 className="mb-4 text-4xl font-semibold sm:text-5xl">
+              Reach out to Triple One Therapy
+            </h1>
+            <p className="mx-auto max-w-2xl text-lg leading-relaxed text-stone-700">
+              Share a bit about what you are looking for and I will follow up
+              within 1-2 business days.
+            </p>
+          </div>
 
-            <form
-              onSubmit={handleSubmit}
-              className="route-card space-y-5 rounded-2xl border border-stone-300 bg-stone-50/94 p-6 sm:p-8"
-            >
+          <form
+            onSubmit={handleSubmit}
+            className="route-card space-y-5 rounded-2xl border border-stone-300 bg-stone-50/94 p-6 sm:p-8"
+          >
+            <input
+              type="text"
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
+              className="hidden"
+              aria-hidden="true"
+            />
+            <label className="block">
+              <span className="mb-2 block text-sm font-medium text-stone-700">
+                Name
+              </span>
               <input
                 type="text"
-                name="website"
-                tabIndex={-1}
-                autoComplete="off"
-                className="hidden"
-                aria-hidden="true"
+                name="name"
+                required
+                className="w-full rounded-lg border border-stone-300 bg-white px-4 py-3 text-stone-900 outline-none transition focus:border-stone-500"
+                placeholder="Your name"
               />
-              <label className="block">
-                <span className="mb-2 block text-sm font-medium text-stone-700">
-                  Name
-                </span>
-                <input
-                  type="text"
-                  name="name"
-                  required
-                  className="w-full rounded-lg border border-stone-300 bg-white px-4 py-3 text-stone-900 outline-none transition focus:border-stone-500"
-                  placeholder="Your name"
-                />
-              </label>
+            </label>
 
-              <label className="block">
-                <span className="mb-2 block text-sm font-medium text-stone-700">
-                  Email
-                </span>
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  className="w-full rounded-lg border border-stone-300 bg-white px-4 py-3 text-stone-900 outline-none transition focus:border-stone-500"
-                  placeholder="you@email.com"
-                />
-              </label>
+            <label className="block">
+              <span className="mb-2 block text-sm font-medium text-stone-700">
+                Email
+              </span>
+              <input
+                type="email"
+                name="email"
+                required
+                className="w-full rounded-lg border border-stone-300 bg-white px-4 py-3 text-stone-900 outline-none transition focus:border-stone-500"
+                placeholder="you@email.com"
+              />
+            </label>
 
-              <label className="block">
-                <span className="mb-2 block text-sm font-medium text-stone-700">
-                  Message
-                </span>
-                <textarea
-                  rows={6}
-                  name="message"
-                  required
-                  className="w-full rounded-lg border border-stone-300 bg-white px-4 py-3 text-stone-900 outline-none transition focus:border-stone-500"
-                  placeholder="How can I support you?"
-                />
-              </label>
+            <label className="block">
+              <span className="mb-2 block text-sm font-medium text-stone-700">
+                Message
+              </span>
+              <textarea
+                rows={6}
+                name="message"
+                required
+                className="w-full rounded-lg border border-stone-300 bg-white px-4 py-3 text-stone-900 outline-none transition focus:border-stone-500"
+                placeholder="How can I support you?"
+              />
+            </label>
 
-              {result?.ok && (
-                <p className="rounded-lg border border-emerald-300 bg-emerald-50 px-4 py-3 text-sm text-emerald-800">
-                  Message sent. I will get back to you soon.
-                </p>
-              )}
+            {result?.ok && (
+              <p className="rounded-lg border border-emerald-300 bg-emerald-50 px-4 py-3 text-sm text-emerald-800">
+                Message sent. I will get back to you soon.
+              </p>
+            )}
 
-              {result && !result.ok && (
-                <p className="rounded-lg border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-800">
-                  {result.error ?? 'Unable to send message. Please try again.'}
-                </p>
-              )}
+            {result && !result.ok && (
+              <p className="rounded-lg border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-800">
+                {result.error ?? 'Unable to send message. Please try again.'}
+              </p>
+            )}
 
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="rounded-full bg-stone-900 px-6 py-3 text-sm font-semibold text-stone-50 transition hover:bg-stone-700"
-              >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
-              </button>
-            </form>
-          </div>
-        </section>
-      </main>
-    </RouteSceneLayout>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="rounded-full bg-stone-900 px-6 py-3 text-sm font-semibold text-stone-50 transition hover:bg-stone-700"
+            >
+              {isSubmitting ? 'Sending...' : 'Send Message'}
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
   )
 }
