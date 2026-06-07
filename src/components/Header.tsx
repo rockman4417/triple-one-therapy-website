@@ -2,12 +2,13 @@ import { Link, useLocation } from '@tanstack/react-router'
 import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import totLogo from '../assets/totlogo.png'
+import SimplePracticeContactWidget from './SimplePracticeContactWidget'
 
 const NAV_ITEMS = [
-  { label: 'Home', href: '/' },
-  { label: 'About Me', href: '/about' },
-  { label: 'Services', href: '/services' },
-  { label: 'Contact Me', href: '/contact' },
+  { label: 'Home', href: '/', type: 'route' as const },
+  { label: 'About Me', href: '/about', type: 'route' as const },
+  { label: 'Services', href: '/services', type: 'route' as const },
+  { label: 'Contact Me', type: 'widget' as const },
 ]
 
 function isRouteActive(pathname: string, hash: string, href: string) {
@@ -49,12 +50,23 @@ export default function Header() {
 
           <nav className="hidden items-center gap-2 rounded-full border border-stone-200/60 bg-[#ede8d1]/84 p-1.5 shadow-[0_10px_30px_-24px_rgba(15,23,42,0.9)] backdrop-blur-sm md:flex">
             {NAV_ITEMS.map((item) => {
-              const active = isRouteActive(location.pathname, location.hash, item.href)
               const sharedClasses =
                 'rounded-full px-4 py-2 text-sm font-medium transition-all duration-200'
-              const activeClasses = active
+              const activeClasses =
+                item.type === 'route' &&
+                isRouteActive(location.pathname, location.hash, item.href)
                 ? 'bg-stone-900 text-stone-50 shadow-[0_10px_22px_-16px_rgba(17,24,39,0.95)]'
                 : 'text-stone-700 hover:bg-stone-200/35'
+
+              if (item.type === 'widget') {
+                return (
+                  <SimplePracticeContactWidget
+                    key={item.label}
+                    label={item.label}
+                    className={`${sharedClasses} ${activeClasses}`}
+                  />
+                )
+              }
 
               return (
                 <Link
@@ -114,10 +126,22 @@ export default function Header() {
         </div>
         <nav className="flex flex-col gap-2">
           {NAV_ITEMS.map((item) => {
-            const active = isRouteActive(location.pathname, location.hash, item.href)
-            const classes = active
+            const classes =
+              item.type === 'route' &&
+              isRouteActive(location.pathname, location.hash, item.href)
               ? 'rounded-xl bg-stone-900 px-4 py-3 text-sm font-medium text-stone-50'
               : 'rounded-xl border border-transparent px-4 py-3 text-sm font-medium text-stone-700 hover:border-stone-300 hover:bg-stone-200/70'
+
+            if (item.type === 'widget') {
+              return (
+                <SimplePracticeContactWidget
+                  key={item.label}
+                  label={item.label}
+                  className={`text-left ${classes}`}
+                  onClick={() => setIsOpen(false)}
+                />
+              )
+            }
 
             return (
               <Link

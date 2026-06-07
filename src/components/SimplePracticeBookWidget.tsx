@@ -11,7 +11,7 @@ type SimplePracticeWidgetProps = Omit<
   label?: string
 }
 
-export default function SimplePracticeWidget({
+export default function SimplePracticeBookWidget({
   className,
   label = 'Request Appointment',
   style,

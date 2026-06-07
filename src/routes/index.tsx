@@ -8,7 +8,7 @@ import logo2 from '../assets/logos/logo-2.png'
 import logo3 from '../assets/logos/logo-3.png'
 import photoBg from '../assets/backgrounds/photo-bg.png'
 import photoBg2 from '../assets/backgrounds/photo-bg-2.png'
-import SimplePracticeWidget from '@/components/SimplePracticeWidget'
+import SimplePracticeBookWidget from '@/components/SimplePracticeBookWidget'
 
 export const Route = createFileRoute('/')({ component: App })
 
@@ -105,7 +105,7 @@ function App() {
             data-reveal
             style={{ transitionDelay: "280ms" }}
           >
-            <SimplePracticeWidget
+            <SimplePracticeBookWidget
               label="Book a Consultation"
               className="rounded-full bg-stone-900 px-6 py-3 text-sm font-semibold text-stone-50 transition hover:bg-stone-700"
             />
@@ -408,7 +408,7 @@ function App() {
             >
               I&apos;m Ready
             </a> */}
-            <SimplePracticeWidget
+            <SimplePracticeBookWidget
               label="I'm Ready"
               data-reveal
               style={{ transitionDelay: "360ms" }}
