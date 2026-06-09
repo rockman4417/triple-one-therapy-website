@@ -106,7 +106,7 @@ function AboutPage() {
               />
             </div>
           </div>
-          <div className="relative min-h-[30vh] md:min-h-screen">
+          <div className="relative hidden min-h-[30vh] md:block md:min-h-screen">
             <img
               src={aboutBg1}
               alt="Portrait for Triple One Therapy"
@@ -117,20 +117,20 @@ function AboutPage() {
       </section>
       <section
         id="intro"
-        className="section-anchor relative min-h-screen overflow-hidden"
+        className="section-anchor relative min-h-screen overflow-visible md:overflow-hidden"
         style={{
           background: "#ede8d1",
         }}
       >
         <div className="grid min-h-screen w-full md:grid-cols-[50%_50%]">
-          <div className="relative min-h-[30vh] md:min-h-screen">
+          <div className="relative min-h-[30vh] md:block md:min-h-screen">
             <img
               src={aboutBg2}
               alt="Portrait for Triple One Therapy"
               className="absolute inset-0 h-full w-full object-cover"
             />
           </div>
-          <div className="flex min-h-[50vh] items-center justify-center px-8 py-16 sm:px-12 md:min-h-screen md:px-20">
+          <div className="flex min-h-[50vh] items-start justify-center px-8 py-16 sm:px-12 md:min-h-screen md:items-center md:px-20">
             <div className="flex max-w-3xl flex-col items-center text-center">
               <p
                 className="scroll-reveal mb-6 text-4xl leading-tight sm:text-6xl"
@@ -176,11 +176,10 @@ function AboutPage() {
                 expression. I am always happy to talk about tattoos, tarot, and
                 horror movies.
               </p>
-             
+
               <SimplePracticeBookWidget
                 label="Work with me"
-                className="scroll-reveal mt-16 inline-flex items-center justify-center border-[3px] border-black px-8 py-3 text-base uppercase tracking-[0.35em] text-black transition hover:bg-black hover:text-[#ede8d1] sm:px-10"
-                data-reveal
+                className="mt-16 inline-flex items-center justify-center border-[3px] border-black px-8 py-3 text-base uppercase tracking-[0.35em] text-black transition hover:bg-black hover:text-[#ede8d1] sm:px-10"
               />
             </div>
           </div>
