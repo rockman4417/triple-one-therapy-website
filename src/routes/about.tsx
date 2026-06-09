@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { createFileRoute } from '@tanstack/react-router';
 import aboutBg1 from '../assets/backgrounds/about-bg-1.png';
 import aboutBg2 from '../assets/backgrounds/about-bg-2.png';
+import SimplePracticeBookWidget from '@/components/SimplePracticeBookWidget';
 
 export const Route = createFileRoute('/about')({ component: AboutPage })
 
@@ -61,15 +62,15 @@ function AboutPage() {
         <div className="grid min-h-screen w-full md:grid-cols-[60%_40%]">
           <div className="flex min-h-[50vh] items-center justify-center px-8 py-16 sm:px-12 md:min-h-screen md:px-20">
             <div className="flex max-w-3xl flex-col items-center text-center">
-              <h2
-                className="scroll-reveal pinyon text-4xl leading-tight text-black sm:text-5xl md:text-6xl"
+              <h1
+                className="scroll-reveal pinyon text-4xl  leading-tight text-black sm:text-5xl md:text-6xl mb-15"
                 data-reveal
                 style={{ fontSize: 38 }}
               >
                 About Your Therapist
-              </h2>
-              <h1
-                className="scroll-reveal mb-6 text-4xl leading-tight sm:text-6xl"
+              </h1>
+              <p
+                className="scroll-reveal mb-12 text-4xl leading-tight sm:text-6xl"
                 data-reveal
                 style={{
                   color: "#3c3629",
@@ -80,8 +81,8 @@ function AboutPage() {
               >
                 I’m a Licensed Professional Counselor working with people in
                 seasons of major transition and self-discovery.
-              </h1>
-              <h1
+              </p>
+              <p
                 className="scroll-reveal mb-6 text-4xl leading-tight sm:text-6xl"
                 data-reveal
                 style={{
@@ -98,15 +99,11 @@ function AboutPage() {
                 and like I was living for others instead of for myself. Those
                 experiences and my journey through them is what led me into this
                 work that I love so deeply.
-              </h1>
-              <a
-                href="/contact"
-                className="scroll-reveal mt-16 inline-flex items-center justify-center border-[3px] border-black px-8 py-3 text-base uppercase tracking-[0.35em] text-black transition hover:bg-black hover:text-[#ede8d1] sm:px-10"
-                data-reveal
-                style={{ transitionDelay: "320ms" }}
-              >
-                Get Started
-              </a>
+              </p>
+              <SimplePracticeBookWidget
+                label="Get Started"
+                className="mt-16 inline-flex items-center justify-center border-[3px] border-black px-8 py-3 text-base uppercase tracking-[0.35em] text-black transition hover:bg-black hover:text-[#ede8d1] sm:px-10"
+              />
             </div>
           </div>
           <div className="relative min-h-[30vh] md:min-h-screen">
@@ -126,17 +123,16 @@ function AboutPage() {
         }}
       >
         <div className="grid min-h-screen w-full md:grid-cols-[50%_50%]">
-            <div className="relative min-h-[30vh] md:min-h-screen">
-              <img
-                src={aboutBg2}
-                alt="Portrait for Triple One Therapy"
-                className="absolute inset-0 h-full w-full object-cover"
-              />
-            </div>
+          <div className="relative min-h-[30vh] md:min-h-screen">
+            <img
+              src={aboutBg2}
+              alt="Portrait for Triple One Therapy"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+          </div>
           <div className="flex min-h-[50vh] items-center justify-center px-8 py-16 sm:px-12 md:min-h-screen md:px-20">
             <div className="flex max-w-3xl flex-col items-center text-center">
-              
-              <h1
+              <p
                 className="scroll-reveal mb-6 text-4xl leading-tight sm:text-6xl"
                 data-reveal
                 style={{
@@ -146,9 +142,12 @@ function AboutPage() {
                   transitionDelay: "120ms",
                 }}
               >
-                As a therapist, I’m interested in what shapes us and drives us to be our most authentic selves. I am passionate about helping people who are grappling with big questions about identity, direction, and purpose. 
-              </h1>
-              <h1
+                As a therapist, I’m interested in what shapes us and drives us
+                to be our most authentic selves. I am passionate about helping
+                people who are grappling with big questions about identity,
+                direction, and purpose.
+              </p>
+              <p
                 className="scroll-reveal mb-6 text-4xl leading-tight sm:text-6xl"
                 data-reveal
                 style={{
@@ -158,9 +157,11 @@ function AboutPage() {
                   transitionDelay: "220ms",
                 }}
               >
-                I draw from existential therapy and logotherapy, along with eastern perspectives that emphasize inner peace, emotional awareness, acceptance, and finding meaning in darkness.
-              </h1>
-              <h1
+                I draw from existential therapy and logotherapy, along with
+                eastern perspectives that emphasize inner peace, emotional
+                awareness, acceptance, and finding meaning in darkness.
+              </p>
+              <p
                 className="scroll-reveal mb-6 text-4xl leading-tight sm:text-6xl"
                 data-reveal
                 style={{
@@ -170,16 +171,17 @@ function AboutPage() {
                   transitionDelay: "220ms",
                 }}
               >
-                Outside of my work, I value time with my three dogs, my active lifestyle, outdoor adventures, travel, film, and creative expression. I am always happy to talk about tattoos, tarot, and horror movies.
-              </h1>
-              <a
-                href="/contact"
+                Outside of my work, I value time with my three dogs, my active
+                lifestyle, outdoor adventures, travel, film, and creative
+                expression. I am always happy to talk about tattoos, tarot, and
+                horror movies.
+              </p>
+             
+              <SimplePracticeBookWidget
+                label="Work with me"
                 className="scroll-reveal mt-16 inline-flex items-center justify-center border-[3px] border-black px-8 py-3 text-base uppercase tracking-[0.35em] text-black transition hover:bg-black hover:text-[#ede8d1] sm:px-10"
                 data-reveal
-                style={{ transitionDelay: "320ms" }}
-              >
-                Work with me
-              </a>
+              />
             </div>
           </div>
         </div>

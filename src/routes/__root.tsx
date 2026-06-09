@@ -1,9 +1,18 @@
-import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
+import {
+  HeadContent,
+  Scripts,
+  createRootRoute,
+} from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
+import { useEffect } from 'react'
 
 import Header from '../components/Header'
 import UnderConstruction from '../components/UnderConstruction'
+import {
+  SIMPLE_PRACTICE_SCRIPT_ID,
+  SIMPLE_PRACTICE_SCRIPT_SRC,
+} from '../components/simple-practice-widget'
 
 import appCss from '../styles.css?url'
 
@@ -34,6 +43,28 @@ export const Route = createRootRoute({
 })
 
 function RootDocument({ children }: { children: React.ReactNode }) {
+  useEffect(() => {
+    const existingScript = document.getElementById(
+      SIMPLE_PRACTICE_SCRIPT_ID,
+    ) as HTMLScriptElement | null
+
+    if (existingScript) {
+      return
+    }
+
+    const script = document.createElement('script')
+    script.id = SIMPLE_PRACTICE_SCRIPT_ID
+    script.src = SIMPLE_PRACTICE_SCRIPT_SRC
+    script.async = true
+    document.body.appendChild(script)
+
+    return () => {
+      if (script.parentNode) {
+        script.parentNode.removeChild(script)
+      }
+    }
+  }, [])
+
   return (
     <html lang="en">
       <head>

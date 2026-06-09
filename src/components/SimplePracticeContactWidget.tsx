@@ -1,8 +1,9 @@
 import { useEffect, type AnchorHTMLAttributes } from 'react'
 
-const SIMPLE_PRACTICE_SCRIPT_ID = 'simplepractice-widget-script'
-const SIMPLE_PRACTICE_SCRIPT_SRC =
-  'https://widget-cdn.simplepractice.com/assets/integration-1.0.js'
+import {
+  SIMPLE_PRACTICE_SCRIPT_ID,
+  SIMPLE_PRACTICE_SCRIPT_SRC,
+} from './simple-practice-widget'
 
 type SimplePracticeContactWidgetProps = Omit<
   AnchorHTMLAttributes<HTMLAnchorElement>,

@@ -81,7 +81,7 @@ function App() {
           >
             triple one therapy
           </h1>
-          <h1
+          <p
             className="scroll-reveal mb-6 text-4xl leading-tight sm:text-6xl"
             data-reveal
             style={{
@@ -92,14 +92,14 @@ function App() {
             }}
           >
             111
-          </h1>
-          <h1
+          </p>
+          <p
             className="scroll-reveal mb-6 text-4xl leading-tight sm:text-6xl pinyon"
             data-reveal
             style={{ color: "#ede8d1", transitionDelay: "190ms", fontSize: 38 }}
           >
             Depth-oriented therapy for the wandering soul
-          </h1>
+          </p>
           <div
             className="scroll-reveal mt-10 flex flex-wrap justify-center gap-4"
             data-reveal
@@ -127,7 +127,7 @@ function App() {
             className="scroll-reveal mx-auto mb-8 h-48 w-48 sm:h-48 sm:w-48"
             data-reveal
           />
-          <h1
+          <p
             className="scroll-reveal mb-6 text-4xl leading-tight sm:text-6xl"
             data-reveal
             style={{
@@ -141,7 +141,7 @@ function App() {
             alignment, awakening, and new beginnings. It is considered a symbol
             of transformation and conscious change, magnifying moments of
             personal growth, clarity, and self-discovery.
-          </h1>
+          </p>
         </div>
       </section>
       <section
@@ -152,14 +152,14 @@ function App() {
         }}
       >
         <div className="mx-auto max-w-5xl text-center">
-          <h1
+          <h2
             className="scroll-reveal mb-12 text-4xl leading-tight sm:text-6xl pinyon"
             data-reveal
             style={{ color: "#000" }}
           >
             you’ve come to the right place if…
-          </h1>
-          <h1
+          </h2>
+          <p
             className="scroll-reveal mb-6 text-4xl leading-tight sm:text-6xl"
             data-reveal
             style={{
@@ -173,8 +173,8 @@ function App() {
             becoming: when old identities, relationships, beliefs, or directions
             no longer feel right, but the next version of yourself is still
             taking shape.
-          </h1>
-          <h1
+          </p>
+          <p
             className="scroll-reveal mb-6 text-4xl leading-tight sm:text-6xl"
             data-reveal
             style={{
@@ -188,7 +188,7 @@ function App() {
             deconstruction, heartbreak, career shifts, existential questions,
             and the quiet, persistent search for a life that feels more like
             your own.
-          </h1>
+          </p>
         </div>
       </section>
       <section
@@ -239,7 +239,7 @@ function App() {
         }}
       >
         <div className="mx-auto max-w-5xl text-center">
-          <h1
+          <blockquote
             className="scroll-reveal mb-6 text-4xl leading-tight sm:text-6xl pinyon"
             data-reveal
             style={{ color: "#ede8d1" }}
@@ -247,18 +247,19 @@ function App() {
             "Between stimulus and response, there is a space. In that space is
             our power to choose our response. In our response lies our growth
             and our freedom."
-          </h1>
-          <h1
+          </blockquote>
+          <cite
             className="scroll-reveal mb-6 text-4xl leading-tight sm:text-6xl"
             data-reveal
             style={{
               color: "#ede8d1",
               fontFamily: "maharlika",
               transitionDelay: "160ms",
+              fontStyle: "normal",
             }}
           >
             Viktor Frankl
-          </h1>
+          </cite>
         </div>
       </section>
       <section
@@ -278,7 +279,7 @@ function App() {
               >
                 Services
               </h2>
-              <h1
+              <p
                 className="scroll-reveal mb-6 text-4xl leading-tight sm:text-6xl"
                 data-reveal
                 style={{
@@ -289,8 +290,8 @@ function App() {
                 }}
               >
                 I offer individual therapy grounded in an existential approach.
-              </h1>
-              <h1
+              </p>
+              <p
                 className="scroll-reveal mb-6 text-4xl leading-tight sm:text-6xl"
                 data-reveal
                 style={{
@@ -304,9 +305,9 @@ function App() {
                 what your experience is asking of you. We slow things down
                 enough to listen to what’s beneath your anxiety, overwhelm, and
                 stagnation.
-              </h1>
+              </p>
               <a
-                href="/about"
+                href="/services"
                 className="scroll-reveal mt-16 inline-flex items-center justify-center border-[3px] border-black px-8 py-3 text-base uppercase tracking-[0.35em] text-black transition hover:bg-black hover:text-[#ede8d1] sm:px-10"
                 data-reveal
                 style={{ transitionDelay: "320ms" }}
