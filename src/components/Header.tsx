@@ -133,14 +133,14 @@ export default function Header() {
               item.type === 'route' &&
               isRouteActive(location.pathname, location.hash, item.href)
               ? 'rounded-xl bg-stone-900 px-4 py-3 text-sm font-medium text-stone-50'
-              : 'rounded-xl border border-transparent px-4 py-3 text-sm font-medium text-stone-700 hover:border-stone-300 hover:bg-stone-200/70'
+              : 'rounded-xl border border-transparent px-4 py-3 text-sm font-medium text-stone-50 hover:border-stone-300 hover:bg-stone-200/70'
 
             if (item.type === 'widget') {
               return (
                 <SimplePracticeContactWidget
                   key={item.label}
                   label={item.label}
-                  className={`text-left uppercase tracking-[0.18em] ${classes}`}
+                  className={`text-left ${classes}`}
                   onClick={() => setIsOpen(false)}
                 />
               )

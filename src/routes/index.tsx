@@ -273,7 +273,7 @@ function App() {
           <div className="flex min-h-[50vh] items-center justify-center px-8 py-16 sm:px-12 md:min-h-screen md:px-20">
             <div className="flex max-w-3xl flex-col items-center text-center">
               <h2
-                className="scroll-reveal pinyon text-4xl leading-tight text-black sm:text-5xl md:text-6xl"
+                className="scroll-reveal pinyon text-4xl leading-tight text-black sm:text-5xl md:text-6xl mb-6"
                 data-reveal
                 style={{ fontSize: 38 }}
               >
