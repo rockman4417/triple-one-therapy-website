@@ -2,6 +2,8 @@
 
 @import 'tw-animate-css';
 
+@import url('https://googleapis.com');
+
 @custom-variant dark (&:is(.dark *));
 
 body {
@@ -11,10 +13,6 @@ body {
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 code {
@@ -155,13 +153,78 @@ code {
   z-index: 0;
 }
 
+.parallax-scene {
+  position: absolute;
+  inset: 0;
+}
+
+.parallax-scene--image .parallax-image,
+.parallax-scene--split .parallax-image,
+.parallax-scene--solid .parallax-solid,
+.parallax-scene--split .parallax-solid,
+.parallax-scene--gradient .parallax-gradient-fill {
+  position: absolute;
+  inset: 0;
+}
+
+.parallax-image {
+  inset: -6%;
+  background-image: var(--scene-image);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: saturate(1.02) contrast(1);
+  opacity: 0.92;
+  transform: translateY(calc(var(--scroll-y) * -0.04px)) scale(1.04);
+  transition: background-image 250ms ease, opacity 250ms ease;
+}
+
+.parallax-solid {
+  background: var(--scene-solid);
+  transition: background 250ms ease;
+}
+
+.parallax-gradient-fill {
+  background: var(--scene-gradient);
+  transition: background 250ms ease;
+}
+
+.parallax-scene--split .parallax-image,
+.parallax-scene--split .parallax-solid {
+  inset: 0;
+  width: 50%;
+}
+
+.parallax-scene--split .parallax-image {
+  left: 0;
+  transform: translateY(calc(var(--scroll-y) * -0.04px)) scale(1.04);
+}
+
+.parallax-scene--split .parallax-solid {
+  left: 50%;
+}
+
+.parallax-scene--split-left .parallax-image {
+  left: 50%;
+}
+
+.parallax-scene--split-left .parallax-solid {
+  left: 0;
+}
+
+.parallax-overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--scene-overlay);
+}
+
 .parallax-gradient {
   position: absolute;
   inset: -15%;
   background:
-    radial-gradient(circle at 12% 14%, rgb(239 198 139 / 45%) 0%, transparent 45%),
-    radial-gradient(circle at 80% 20%, rgb(166 201 189 / 45%) 0%, transparent 42%),
-    radial-gradient(circle at 30% 80%, rgb(180 176 211 / 30%) 0%, transparent 50%);
+    radial-gradient(circle at 12% 14%, rgb(239 198 139 / 18%) 0%, transparent 45%),
+    radial-gradient(circle at 80% 20%, rgb(166 201 189 / 18%) 0%, transparent 42%),
+    radial-gradient(circle at 30% 80%, rgb(180 176 211 / 14%) 0%, transparent 50%);
   transform: translateY(calc(var(--scroll-y) * -0.05px));
 }
 
@@ -169,7 +232,7 @@ code {
   position: absolute;
   border-radius: 9999px;
   filter: blur(2px);
-  opacity: 0.5;
+  opacity: 0.18;
 }
 
 .layer-one {
@@ -202,7 +265,7 @@ code {
 .parallax-grid {
   position: absolute;
   inset: 0;
-  opacity: 0.3;
+  opacity: 0.08;
   background-image:
     linear-gradient(rgb(93 93 93 / 10%) 1px, transparent 1px),
     linear-gradient(90deg, rgb(93 93 93 / 10%) 1px, transparent 1px);
@@ -210,7 +273,83 @@ code {
   transform: translateY(calc(var(--scroll-y) * -0.08px));
 }
 
+@keyframes route-fade-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.route-scene > * {
+  opacity: 0;
+  animation: route-fade-up 700ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.route-scene > :nth-child(1) {
+  animation-delay: 80ms;
+}
+
+.route-scene > :nth-child(2) {
+  animation-delay: 160ms;
+}
+
+.route-scene > :nth-child(3) {
+  animation-delay: 240ms;
+}
+
+.route-scene > :nth-child(4) {
+  animation-delay: 320ms;
+}
+
+.route-card {
+  opacity: 0;
+  animation: route-fade-up 820ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 260ms;
+}
+
+.route-card:nth-child(2) {
+  animation-delay: 340ms;
+}
+
+.pinyon {
+  font-family: 'Pinyon Script', cursive;
+  font-style: italic;
+}
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translate3d(0, 34px, 0);
+  filter: blur(8px);
+  transition:
+    opacity 820ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 820ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 820ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform, filter;
+}
+
+.scroll-reveal-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  filter: blur(0);
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .route-scene > *,
+  .route-card,
+  .scroll-reveal {
+    opacity: 1;
+    animation: none;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+
+  .parallax-image,
   .parallax-gradient,
   .layer-one,
   .layer-two,
