@@ -67,7 +67,9 @@ function AboutPage() {
                 data-reveal
                 style={{ fontSize: 38 }}
               >
-                About Your Therapist
+                <span className="inline-block pe-[0.2em]">
+                  About Your Therapist
+                </span>
               </h1>
               <p
                 className="scroll-reveal mb-12 text-4xl leading-tight sm:text-6xl"
