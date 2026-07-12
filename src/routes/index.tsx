@@ -5,7 +5,7 @@ import homeBackground from '../assets/backgrounds/home-bg.png'
 import homeBackground2 from '../assets/backgrounds/home-bg-2.png'
 import logo from '../assets/logos/logo-1.png'
 import logo2 from '../assets/logos/logo-2.png'
-import logo3 from '../assets/logos/logo-3.png'
+// import logo3 from '../assets/logos/logo-3.png'
 import photoBg from '../assets/backgrounds/photo-bg.png'
 import photoBg2 from '../assets/backgrounds/photo-bg-2.png'
 import SimplePracticeBookWidget from '@/components/SimplePracticeBookWidget'
@@ -98,7 +98,9 @@ function App() {
             data-reveal
             style={{ color: "#ede8d1", transitionDelay: "190ms", fontSize: 38 }}
           >
-            Depth-oriented therapy for the wandering soul
+            <span className="inline-block pe-[0.2em]">
+              Depth-oriented therapy for the wandering soul
+            </span>
           </p>
           <div
             className="scroll-reveal mt-10 flex flex-wrap justify-center gap-4"
@@ -427,13 +429,13 @@ function App() {
                   className="h-44 w-44 object-contain sm:h-56 sm:w-56 md:h-64 md:w-64"
                 />
               </div>
-              <div className="flex justify-center">
+              {/* <div className="flex justify-center">
                 <img
                   src={logo3}
                   alt="Triple One Therapy symbol set"
                   className="h-56 w-auto object-contain sm:h-72 md:h-80"
                 />
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
