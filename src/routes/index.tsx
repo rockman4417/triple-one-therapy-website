@@ -122,9 +122,9 @@ function App() {
             111
           </p>
           <p
-            className="scroll-reveal mb-6 text-4xl leading-tight sm:text-6xl pinyon"
+            className="scroll-reveal pinyon mb-6 text-[38px] leading-tight sm:text-[54px]"
             data-reveal
-            style={{ color: "#ede8d1", transitionDelay: "190ms", fontSize: 38 }}
+            style={{ color: "#ede8d1", transitionDelay: "190ms" }}
           >
             <span className="inline-block pe-[0.2em]">
               Depth-oriented therapy for the wandering soul

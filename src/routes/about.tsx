@@ -79,7 +79,7 @@ function AboutPage() {
                   transitionDelay: "120ms",
                 }}
               >
-                I’m a Licensed Professional Counselor working with people in
+                Hi I'm Cat.  I’m a Licensed Professional Counselor working with people in
                 seasons of major transition and self-discovery.
               </p>
               <p

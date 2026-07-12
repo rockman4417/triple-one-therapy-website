@@ -1,8 +1,8 @@
+@import '@fontsource/pinyon-script/latin-400.css';
+
 @import 'tailwindcss';
 
 @import 'tw-animate-css';
-
-@import url('https://googleapis.com');
 
 @custom-variant dark (&:is(.dark *));
 
@@ -318,7 +318,8 @@ code {
 
 .pinyon {
   font-family: 'Pinyon Script', cursive;
-  font-style: italic;
+  font-style: normal;
+  font-weight: 400;
 }
 
 .scroll-reveal {
