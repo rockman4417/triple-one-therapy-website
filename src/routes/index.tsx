@@ -1,11 +1,17 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useEffect } from 'react'
 
-import homeBackground from '../assets/backgrounds/home-bg.png'
 import homeBackground2 from '../assets/backgrounds/home-bg-2.png'
+import homeBackground1280 from '../assets/backgrounds/home-responsive/home-bg-1280.avif'
+import homeBackground1920 from '../assets/backgrounds/home-responsive/home-bg-1920.avif'
+import homeBackground1920Fallback from '../assets/backgrounds/home-responsive/home-bg-1920.jpg'
+import homeBackground2560 from '../assets/backgrounds/home-responsive/home-bg-2560.avif'
+import homeBackgroundMobile640 from '../assets/backgrounds/home-responsive/home-bg-mobile-640.avif'
+import homeBackgroundMobile960 from '../assets/backgrounds/home-responsive/home-bg-mobile-960.avif'
+import homeBackgroundMobileFallback from '../assets/backgrounds/home-responsive/home-bg-mobile-960.jpg'
 import logo from '../assets/logos/logo-1.png'
 import logo2 from '../assets/logos/logo-2.png'
-import logo3 from '../assets/logos/logo-3.png'
+// import logo3 from '../assets/logos/logo-3.png'
 import photoBg from '../assets/backgrounds/photo-bg.png'
 import photoBg2 from '../assets/backgrounds/photo-bg-2.png'
 import SimplePracticeBookWidget from '@/components/SimplePracticeBookWidget'
@@ -62,14 +68,36 @@ function App() {
       <section
         id="landing"
         className="section-anchor relative flex min-h-screen items-center overflow-hidden px-6 py-24"
-        style={{
-          backgroundImage: `linear-gradient(180deg, rgb(22 18 16 / 28%) 0%, rgb(22 18 16 / 42%) 100%), url("${homeBackground}")`,
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-        }}
       >
-        <div className="mx-auto max-w-5xl text-center">
+        <picture className="absolute inset-0">
+          <source
+            media="(max-width: 639px)"
+            type="image/avif"
+            srcSet={`${homeBackgroundMobile640} 640w, ${homeBackgroundMobile960} 960w`}
+            sizes="100vw"
+          />
+          <source
+            media="(max-width: 639px)"
+            type="image/jpeg"
+            srcSet={homeBackgroundMobileFallback}
+          />
+          <source
+            type="image/avif"
+            srcSet={`${homeBackground1280} 1280w, ${homeBackground1920} 1920w, ${homeBackground2560} 2560w`}
+            sizes="100vw"
+          />
+          <img
+            src={homeBackground1920Fallback}
+            alt=""
+            aria-hidden="true"
+            fetchPriority="high"
+            width="1920"
+            height="1079"
+            className="h-full w-full object-cover object-center"
+          />
+        </picture>
+        <div className="absolute inset-0 bg-gradient-to-b from-[rgb(22_18_16/28%)] to-[rgb(22_18_16/42%)]" />
+        <div className="relative z-10 mx-auto max-w-5xl text-center">
           <h1
             className="scroll-reveal mb-6 text-4xl leading-tight sm:text-6xl"
             data-reveal
@@ -94,11 +122,13 @@ function App() {
             111
           </p>
           <p
-            className="scroll-reveal mb-6 text-4xl leading-tight sm:text-6xl pinyon"
+            className="scroll-reveal pinyon mb-6 text-[38px] leading-tight sm:text-[54px]"
             data-reveal
-            style={{ color: "#ede8d1", transitionDelay: "190ms", fontSize: 38 }}
+            style={{ color: "#ede8d1", transitionDelay: "190ms" }}
           >
-            Depth-oriented therapy for the wandering soul
+            <span className="inline-block pe-[0.2em]">
+              Depth-oriented therapy for the wandering soul
+            </span>
           </p>
           <div
             className="scroll-reveal mt-10 flex flex-wrap justify-center gap-4"
@@ -427,13 +457,13 @@ function App() {
                   className="h-44 w-44 object-contain sm:h-56 sm:w-56 md:h-64 md:w-64"
                 />
               </div>
-              <div className="flex justify-center">
+              {/* <div className="flex justify-center">
                 <img
                   src={logo3}
                   alt="Triple One Therapy symbol set"
                   className="h-56 w-auto object-contain sm:h-72 md:h-80"
                 />
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
