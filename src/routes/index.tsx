@@ -425,7 +425,7 @@ function App() {
                   className="not-italic text-3xl leading-tight text-[#ede8d1]"
                   style={{ fontFamily: "maharlika" }}
                 >
-                  3610 34th Street
+                  2619 34th Street, Suite 2A
                   <br />
                   Lubbock, TX 79410
                 </address>
