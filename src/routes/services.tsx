@@ -3,10 +3,13 @@ import { createFileRoute } from '@tanstack/react-router'
 import servicesBg1 from '../assets/backgrounds/services-bg-1.png';
 import servicesBg2 from '../assets/backgrounds/services-bg-2.png';
 import SimplePracticeBookWidget from '@/components/SimplePracticeBookWidget';
+import { useWebsiteValues } from '@/features/website/useWebsiteValues';
 
 export const Route = createFileRoute('/services')({ component: ServicesPage })
 
 function ServicesPage() {
+  const { hourly_rate: hourlyRate } = useWebsiteValues()
+
    useEffect(() => {
     const hash = window.location.hash.replace('#', '')
     if (!hash) {
@@ -206,7 +209,7 @@ function ServicesPage() {
                   transitionDelay: "120ms",
                 }}
               >
-                Individual Psychotherapy $175 for 50 minutes
+                Individual Psychotherapy ${hourlyRate.toLocaleString('en-US')} for 50 minutes
               </h3>
               <p
                 className="scroll-reveal mb-6 text-4xl leading-tight sm:text-6xl"
