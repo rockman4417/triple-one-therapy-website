@@ -206,7 +206,7 @@ function ServicesPage() {
                   transitionDelay: "120ms",
                 }}
               >
-                Individual Psychotherapy $130/50 minutes
+                Individual Psychotherapy $175 for 50 minutes
               </h3>
               <p
                 className="scroll-reveal mb-6 text-4xl leading-tight sm:text-6xl"
@@ -218,9 +218,7 @@ function ServicesPage() {
                   transitionDelay: "220ms",
                 }}
               >
-                I currently accept United Healthcare, Aetna, Cigna, and BCBS. My
-                private pay rate is $130/hour, with limited sliding scale spots
-                for those enduring financial hardship.
+                I currently accept United Healthcare, Aetna, Cigna, and BCBS.
               </p>
               <SimplePracticeBookWidget
                 label="Get Started"

@@ -521,7 +521,7 @@ function App() {
               <p className="mt-3 text-stone-700">
                 One-on-one therapy tailored to your needs and goals.
               </p>
-              <p className="mt-5 text-lg font-semibold text-stone-900">$130</p>
+              <p className="mt-5 text-lg font-semibold text-stone-900">$175</p>
             </article>
 
             <article className="route-card rounded-2xl border border-stone-300 bg-stone-50 p-6 sm:p-8">
