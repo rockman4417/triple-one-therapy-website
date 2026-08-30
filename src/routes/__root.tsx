@@ -2,11 +2,13 @@ import {
   HeadContent,
   Scripts,
   createRootRoute,
+  useLocation,
 } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 import { useEffect } from 'react'
 
+import { AuthProvider } from '../components/auth/AuthProvider'
 import Header from '../components/Header'
 import UnderConstruction from '../components/UnderConstruction'
 import {
@@ -47,6 +49,10 @@ export const Route = createRootRoute({
 })
 
 function RootDocument({ children }: { children: React.ReactNode }) {
+  const location = useLocation()
+  const isAdminArea =
+    location.pathname === '/login' || location.pathname.startsWith('/admin')
+
   useEffect(() => {
     const existingScript = document.getElementById(
       SIMPLE_PRACTICE_SCRIPT_ID,
@@ -75,22 +81,24 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body className="relative min-h-screen">
-        <div className="relative z-10">
-          <Header />
-          {children}
-        </div>
-        <UnderConstruction isOpen={SITE_UNDER_CONSTRUCTION} />
-        <TanStackDevtools
-          config={{
-            position: 'bottom-right',
-          }}
-          plugins={[
-            {
-              name: 'Tanstack Router',
-              render: <TanStackRouterDevtoolsPanel />,
-            },
-          ]}
-        />
+        <AuthProvider>
+          <div className="relative z-10">
+            {!isAdminArea ? <Header /> : null}
+            {children}
+          </div>
+          <UnderConstruction isOpen={SITE_UNDER_CONSTRUCTION} />
+          <TanStackDevtools
+            config={{
+              position: 'bottom-right',
+            }}
+            plugins={[
+              {
+                name: 'Tanstack Router',
+                render: <TanStackRouterDevtoolsPanel />,
+              },
+            ]}
+          />
+        </AuthProvider>
         <Scripts />
       </body>
     </html>

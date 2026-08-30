@@ -11,7 +11,7 @@ const NAV_ITEMS = [
   { label: 'Contact Me', type: 'widget' as const },
 ]
 
-function isRouteActive(pathname: string, hash: string, href: string) {
+function isRouteActive(pathname: string, href: string) {
   if (href === '/') {
     return pathname === '/'
   }
@@ -53,7 +53,7 @@ export default function Header() {
                 'relative py-2 text-sm uppercase tracking-[0.22em] transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-center after:scale-x-0 after:bg-current after:transition-transform after:duration-200'
               const activeClasses =
                 item.type === 'route' &&
-                isRouteActive(location.pathname, location.hash, item.href)
+                isRouteActive(location.pathname, item.href)
                   ? 'text-[#f7f0e2] after:scale-x-100'
                   : 'text-[#e0d4c3] hover:text-[#fff8ec] hover:after:scale-x-100'
 
@@ -131,7 +131,7 @@ export default function Header() {
           {NAV_ITEMS.map((item) => {
             const classes =
               item.type === 'route' &&
-              isRouteActive(location.pathname, location.hash, item.href)
+              isRouteActive(location.pathname, item.href)
               ? 'rounded-xl bg-stone-900 px-4 py-3 text-sm font-medium text-stone-50'
               : 'rounded-xl border border-transparent px-4 py-3 text-sm font-medium text-stone-50 hover:border-stone-300 hover:bg-stone-200/70'
 
