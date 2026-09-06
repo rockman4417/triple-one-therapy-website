@@ -15,7 +15,9 @@ import logo2 from '../assets/logos/logo-2.png'
 import photoBg from '../assets/backgrounds/photo-bg.png'
 import photoBg2 from '../assets/backgrounds/photo-bg-2.png'
 import SimplePracticeBookWidget from '@/components/SimplePracticeBookWidget'
+import SimplePracticeContactWidget from '@/components/SimplePracticeContactWidget'
 import { useWebsiteValues } from '@/features/website/useWebsiteValues'
+import { config } from '@/config'
 
 export const Route = createFileRoute('/')({ component: App })
 
@@ -150,11 +152,19 @@ function App() {
             data-reveal
             style={{ transitionDelay: "280ms" }}
           >
-            <SimplePracticeBookWidget
-              label="Book a Consultation"
-              // className="bg-stone-900 px-6 py-3 text-sm font-semibold text-stone-50 transition hover:bg-stone-700"
-              className="mt-16 inline-flex items-center justify-center border-[3px] border-[#ede8d1] px-8 py-3 text-2xl uppercase tracking-[0.28em] text-[#ede8d1] no-underline transition hover:bg-[#ede8d1] hover:text-[#433b2f] sm:px-14"
-            />
+            {config.waitlistEnabled ? (
+              <SimplePracticeContactWidget
+                label="Join the Waitlist"
+                // className="bg-stone-900 px-6 py-3 text-sm font-semibold text-stone-50 transition hover:bg-stone-700"
+                className="mt-16 inline-flex items-center justify-center border-[3px] border-[#ede8d1] px-8 py-3 text-2xl uppercase tracking-[0.28em] text-[#ede8d1] no-underline transition hover:bg-[#ede8d1] hover:text-[#433b2f] sm:px-14"
+              />
+            ) : (
+              <SimplePracticeBookWidget
+                label="Book a Consultation"
+                // className="bg-stone-900 px-6 py-3 text-sm font-semibold text-stone-50 transition hover:bg-stone-700"
+                className="mt-16 inline-flex items-center justify-center border-[3px] border-[#ede8d1] px-8 py-3 text-2xl uppercase tracking-[0.28em] text-[#ede8d1] no-underline transition hover:bg-[#ede8d1] hover:text-[#433b2f] sm:px-14"
+              />
+            )}
           </div>
         </div>
       </section>
@@ -442,7 +452,7 @@ function App() {
                 >
                   {websiteValues.address_line_1}
                   <br />
-                  {websiteValues.city}, {websiteValues.state}{' '}
+                  {websiteValues.city}, {websiteValues.state}{" "}
                   {websiteValues.zip}
                 </address>
               </div>
@@ -456,12 +466,21 @@ function App() {
             >
               I&apos;m Ready
             </a> */}
-            <SimplePracticeBookWidget
-              label="I'm Ready"
-              data-reveal
-              style={{ transitionDelay: "360ms" }}
-              className="scroll-reveal mt-16 inline-flex items-center justify-center border-[3px] border-[#ede8d1] px-8 py-3 text-2xl uppercase tracking-[0.28em] text-[#ede8d1] no-underline transition hover:bg-[#ede8d1] hover:text-[#433b2f] sm:px-14"
-            />
+            {config.waitlistEnabled ? (
+              <SimplePracticeContactWidget
+                label="Join the Waitlist"
+                data-reveal
+                style={{ transitionDelay: "360ms" }}
+                className="scroll-reveal mt-16 inline-flex items-center justify-center border-[3px] border-[#ede8d1] px-8 py-3 text-2xl uppercase tracking-[0.28em] text-[#ede8d1] no-underline transition hover:bg-[#ede8d1] hover:text-[#433b2f] sm:px-14"
+              />
+            ) : (
+              <SimplePracticeBookWidget
+                label="I'm Ready"
+                data-reveal
+                style={{ transitionDelay: "360ms" }}
+                className="scroll-reveal mt-16 inline-flex items-center justify-center border-[3px] border-[#ede8d1] px-8 py-3 text-2xl uppercase tracking-[0.28em] text-[#ede8d1] no-underline transition hover:bg-[#ede8d1] hover:text-[#433b2f] sm:px-14"
+              />
+            )}
           </div>
 
           <div className="flex items-center justify-center">

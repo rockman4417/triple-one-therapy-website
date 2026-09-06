@@ -2,13 +2,14 @@ import { Link, useLocation } from '@tanstack/react-router'
 import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import totLogo from '../assets/totlogo.png'
-import SimplePracticeContactWidget from './SimplePracticeContactWidget'
+import SimplePracticeContactWidget from './SimplePracticeContactWidget';
+import { config } from '@/config';
 
 const NAV_ITEMS = [
   { label: 'Home', href: '/', type: 'route' as const },
   { label: 'About Me', href: '/about', type: 'route' as const },
   { label: 'Services', href: '/services', type: 'route' as const },
-  { label: 'Contact Me', type: 'widget' as const },
+  { label: config.waitlistEnabled ? 'Join the Waitlist' : 'Contact Me', type: 'widget' as const },
 ]
 
 function isRouteActive(pathname: string, href: string) {
