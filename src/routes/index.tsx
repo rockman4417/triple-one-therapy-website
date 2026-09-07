@@ -17,7 +17,7 @@ import photoBg2 from '../assets/backgrounds/photo-bg-2.png'
 import SimplePracticeBookWidget from '@/components/SimplePracticeBookWidget'
 import SimplePracticeContactWidget from '@/components/SimplePracticeContactWidget'
 import { useWebsiteValues } from '@/features/website/useWebsiteValues'
-import { config } from '@/config'
+import { useWaitlistOptions } from '@/features/website/useWaitlistOptions'
 
 export const Route = createFileRoute('/')({ component: App })
 
@@ -33,6 +33,7 @@ function formatPhoneNumber(phone: number) {
 
 function App() {
   const websiteValues = useWebsiteValues()
+  const waitlistOptions = useWaitlistOptions()
   const phoneNumber = String(websiteValues.phone)
   const formattedPhoneNumber = formatPhoneNumber(websiteValues.phone)
 
@@ -152,12 +153,20 @@ function App() {
             data-reveal
             style={{ transitionDelay: "280ms" }}
           >
-            {config.waitlistEnabled ? (
-              <SimplePracticeContactWidget
-                label="Join the Waitlist"
-                // className="bg-stone-900 px-6 py-3 text-sm font-semibold text-stone-50 transition hover:bg-stone-700"
-                className="mt-16 inline-flex items-center justify-center border-[3px] border-[#ede8d1] px-8 py-3 text-2xl uppercase tracking-[0.28em] text-[#ede8d1] no-underline transition hover:bg-[#ede8d1] hover:text-[#433b2f] sm:px-14"
-              />
+            {waitlistOptions.waitlist_enabled ? (
+              <div className="flex max-w-2xl flex-col items-center">
+                <span
+                  className="block text-balance text-2xl leading-snug tracking-[0.025em] text-[#ede8d1] drop-shadow-[0_2px_8px_rgb(22_18_16/55%)] sm:text-[1.75rem]"
+                  style={{ fontFamily: "maharlika" }}
+                >
+                  {waitlistOptions.waitlist_homepage_message}
+                </span>
+                <SimplePracticeContactWidget
+                  label="Join the Waitlist"
+                  // className="bg-stone-900 px-6 py-3 text-sm font-semibold text-stone-50 transition hover:bg-stone-700"
+                  className="mt-8 inline-flex items-center justify-center border-[3px] border-[#ede8d1] px-8 py-3 text-2xl uppercase tracking-[0.28em] text-[#ede8d1] no-underline transition hover:bg-[#ede8d1] hover:text-[#433b2f] sm:px-14"
+                />
+              </div>
             ) : (
               <SimplePracticeBookWidget
                 label="Book a Consultation"
@@ -466,21 +475,23 @@ function App() {
             >
               I&apos;m Ready
             </a> */}
-            {config.waitlistEnabled ? (
-              <SimplePracticeContactWidget
-                label="Join the Waitlist"
-                data-reveal
-                style={{ transitionDelay: "360ms" }}
-                className="scroll-reveal mt-16 inline-flex items-center justify-center border-[3px] border-[#ede8d1] px-8 py-3 text-2xl uppercase tracking-[0.28em] text-[#ede8d1] no-underline transition hover:bg-[#ede8d1] hover:text-[#433b2f] sm:px-14"
-              />
-            ) : (
-              <SimplePracticeBookWidget
-                label="I'm Ready"
-                data-reveal
-                style={{ transitionDelay: "360ms" }}
-                className="scroll-reveal mt-16 inline-flex items-center justify-center border-[3px] border-[#ede8d1] px-8 py-3 text-2xl uppercase tracking-[0.28em] text-[#ede8d1] no-underline transition hover:bg-[#ede8d1] hover:text-[#433b2f] sm:px-14"
-              />
-            )}
+            <div
+              className="scroll-reveal mt-16"
+              data-reveal
+              style={{ transitionDelay: "360ms" }}
+            >
+              {waitlistOptions.waitlist_enabled ? (
+                <SimplePracticeContactWidget
+                  label="Join the Waitlist"
+                  className="inline-flex items-center justify-center border-[3px] border-[#ede8d1] px-8 py-3 text-2xl uppercase tracking-[0.28em] text-[#ede8d1] no-underline transition hover:bg-[#ede8d1] hover:text-[#433b2f] sm:px-14"
+                />
+              ) : (
+                <SimplePracticeBookWidget
+                  label="I'm Ready"
+                  className="inline-flex items-center justify-center border-[3px] border-[#ede8d1] px-8 py-3 text-2xl uppercase tracking-[0.28em] text-[#ede8d1] no-underline transition hover:bg-[#ede8d1] hover:text-[#433b2f] sm:px-14"
+                />
+              )}
+            </div>
           </div>
 
           <div className="flex items-center justify-center">

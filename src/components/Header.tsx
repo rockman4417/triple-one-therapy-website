@@ -3,13 +3,12 @@ import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import totLogo from '../assets/totlogo.png'
 import SimplePracticeContactWidget from './SimplePracticeContactWidget';
-import { config } from '@/config';
+import { useWaitlistOptions } from '@/features/website/useWaitlistOptions'
 
-const NAV_ITEMS = [
+const BASE_NAV_ITEMS = [
   { label: 'Home', href: '/', type: 'route' as const },
   { label: 'About Me', href: '/about', type: 'route' as const },
   { label: 'Services', href: '/services', type: 'route' as const },
-  { label: config.waitlistEnabled ? 'Join the Waitlist' : 'Contact Me', type: 'widget' as const },
 ]
 
 function isRouteActive(pathname: string, href: string) {
@@ -22,6 +21,14 @@ function isRouteActive(pathname: string, href: string) {
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
+  const { waitlist_enabled: waitlistEnabled } = useWaitlistOptions()
+  const navItems = [
+    ...BASE_NAV_ITEMS,
+    {
+      label: waitlistEnabled ? 'Join the Waitlist' : 'Contact Me',
+      type: 'widget' as const,
+    },
+  ]
 
   return (
     <>
@@ -49,7 +56,7 @@ export default function Header() {
           </Link>
 
           <nav className="hidden items-center gap-8 md:flex">
-            {NAV_ITEMS.map((item) => {
+            {navItems.map((item) => {
               const sharedClasses =
                 'relative py-2 text-sm uppercase tracking-[0.22em] transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-center after:scale-x-0 after:bg-current after:transition-transform after:duration-200'
               const activeClasses =
@@ -129,7 +136,7 @@ export default function Header() {
           </button>
         </div>
         <nav className="flex flex-col gap-2">
-          {NAV_ITEMS.map((item) => {
+          {navItems.map((item) => {
             const classes =
               item.type === 'route' &&
               isRouteActive(location.pathname, item.href)
