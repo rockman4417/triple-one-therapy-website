@@ -3,12 +3,18 @@ import { createFileRoute } from '@tanstack/react-router'
 import servicesBg1 from '../assets/backgrounds/services-bg-1.png';
 import servicesBg2 from '../assets/backgrounds/services-bg-2.png';
 import SimplePracticeBookWidget from '@/components/SimplePracticeBookWidget';
+import SimplePracticeContactWidget from '@/components/SimplePracticeContactWidget'
 import { useWebsiteValues } from '@/features/website/useWebsiteValues';
+import { useWaitlistOptions } from '@/features/website/useWaitlistOptions'
 
 export const Route = createFileRoute('/services')({ component: ServicesPage })
 
 function ServicesPage() {
   const { hourly_rate: hourlyRate } = useWebsiteValues()
+  const {
+    waitlist_enabled: waitlistEnabled,
+    isLoading: isWaitlistLoading,
+  } = useWaitlistOptions()
 
    useEffect(() => {
     const hash = window.location.hash.replace('#', '')
@@ -209,7 +215,8 @@ function ServicesPage() {
                   transitionDelay: "120ms",
                 }}
               >
-                Individual Psychotherapy ${hourlyRate.toLocaleString('en-US')} for 50 minutes
+                Individual Psychotherapy ${hourlyRate.toLocaleString("en-US")}{" "}
+                for 50 minutes
               </h3>
               <p
                 className="scroll-reveal mb-6 text-4xl leading-tight sm:text-6xl"
@@ -223,10 +230,25 @@ function ServicesPage() {
               >
                 I currently accept United Healthcare, Aetna, Cigna, and BCBS.
               </p>
-              <SimplePracticeBookWidget
-                label="Get Started"
-                className="mt-16 inline-flex items-center justify-center border-[3px] border-black px-8 py-3 text-base uppercase tracking-[0.35em] text-black transition hover:bg-black hover:text-[#ede8d1] sm:px-10"
-              />
+              {isWaitlistLoading ? (
+                <button
+                  type="button"
+                  disabled
+                  className="mt-16 inline-flex cursor-wait items-center justify-center border-[3px] border-black px-8 py-3 text-base uppercase tracking-[0.35em] text-black opacity-55 sm:px-10"
+                >
+                  Checking availability…
+                </button>
+              ) : waitlistEnabled ? (
+                <SimplePracticeContactWidget
+                  label="Join the Waitlist"
+                  className="mt-16 inline-flex items-center justify-center border-[3px] border-black px-8 py-3 text-base uppercase tracking-[0.35em] text-black transition hover:bg-black hover:text-[#ede8d1] sm:px-10"
+                />
+              ) : (
+                <SimplePracticeBookWidget
+                  label="Get Started"
+                  className="mt-16 inline-flex items-center justify-center border-[3px] border-black px-8 py-3 text-base uppercase tracking-[0.35em] text-black transition hover:bg-black hover:text-[#ede8d1] sm:px-10"
+                />
+              )}
             </div>
           </div>
         </div>

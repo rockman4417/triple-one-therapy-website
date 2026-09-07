@@ -3,10 +3,17 @@ import { createFileRoute } from '@tanstack/react-router';
 import aboutBg1 from '../assets/backgrounds/about-bg-1.png';
 import aboutBg2 from '../assets/backgrounds/about-bg-2.png';
 import SimplePracticeBookWidget from '@/components/SimplePracticeBookWidget';
+import SimplePracticeContactWidget from '@/components/SimplePracticeContactWidget';
+import { useWaitlistOptions } from '@/features/website/useWaitlistOptions'
 
 export const Route = createFileRoute('/about')({ component: AboutPage })
 
 function AboutPage() {
+  const {
+    waitlist_enabled: waitlistEnabled,
+    isLoading: isWaitlistLoading,
+  } = useWaitlistOptions()
+
    useEffect(() => {
     const hash = window.location.hash.replace('#', '')
     if (!hash) {
@@ -81,8 +88,8 @@ function AboutPage() {
                   transitionDelay: "120ms",
                 }}
               >
-                Hi I'm Cat.  I’m a Licensed Professional Counselor working with people in
-                seasons of major transition and self-discovery.
+                Hi I'm Cat. I’m a Licensed Professional Counselor working with
+                people in seasons of major transition and self-discovery.
               </p>
               <p
                 className="scroll-reveal mb-6 text-4xl leading-tight sm:text-6xl"
@@ -102,10 +109,25 @@ function AboutPage() {
                 experiences and my journey through them is what led me into this
                 work that I love so deeply.
               </p>
-              <SimplePracticeBookWidget
-                label="Get Started"
-                className="mt-16 inline-flex items-center justify-center border-[3px] border-black px-8 py-3 text-base uppercase tracking-[0.35em] text-black transition hover:bg-black hover:text-[#ede8d1] sm:px-10"
-              />
+              {isWaitlistLoading ? (
+                <button
+                  type="button"
+                  disabled
+                  className="mt-16 inline-flex cursor-wait items-center justify-center border-[3px] border-black px-8 py-3 text-base uppercase tracking-[0.35em] text-black opacity-55 sm:px-10"
+                >
+                  Checking availability…
+                </button>
+              ) : waitlistEnabled ? (
+                <SimplePracticeContactWidget
+                  label="Join the Waitlist"
+                  className="mt-16 inline-flex items-center justify-center border-[3px] border-black px-8 py-3 text-base uppercase tracking-[0.35em] text-black transition hover:bg-black hover:text-[#ede8d1] sm:px-10"
+                />
+              ) : (
+                <SimplePracticeBookWidget
+                  label="Get Started"
+                  className="mt-16 inline-flex items-center justify-center border-[3px] border-black px-8 py-3 text-base uppercase tracking-[0.35em] text-black transition hover:bg-black hover:text-[#ede8d1] sm:px-10"
+                />
+              )}
             </div>
           </div>
           <div className="relative hidden min-h-[30vh] md:block md:min-h-screen">
@@ -179,10 +201,25 @@ function AboutPage() {
                 horror movies.
               </p>
 
-              <SimplePracticeBookWidget
-                label="Work with me"
-                className="mt-16 inline-flex items-center justify-center border-[3px] border-black px-8 py-3 text-base uppercase tracking-[0.35em] text-black transition hover:bg-black hover:text-[#ede8d1] sm:px-10"
-              />
+              {isWaitlistLoading ? (
+                <button
+                  type="button"
+                  disabled
+                  className="mt-16 inline-flex cursor-wait items-center justify-center border-[3px] border-black px-8 py-3 text-base uppercase tracking-[0.35em] text-black opacity-55 sm:px-10"
+                >
+                  Checking availability…
+                </button>
+              ) : waitlistEnabled ? (
+                <SimplePracticeContactWidget
+                  label="Join the Waitlist"
+                  className="mt-16 inline-flex items-center justify-center border-[3px] border-black px-8 py-3 text-base uppercase tracking-[0.35em] text-black transition hover:bg-black hover:text-[#ede8d1] sm:px-10"
+                />
+              ) : (
+                <SimplePracticeBookWidget
+                  label="Work with me"
+                  className="mt-16 inline-flex items-center justify-center border-[3px] border-black px-8 py-3 text-base uppercase tracking-[0.35em] text-black transition hover:bg-black hover:text-[#ede8d1] sm:px-10"
+                />
+              )}
             </div>
           </div>
         </div>

@@ -15,7 +15,9 @@ import logo2 from '../assets/logos/logo-2.png'
 import photoBg from '../assets/backgrounds/photo-bg.png'
 import photoBg2 from '../assets/backgrounds/photo-bg-2.png'
 import SimplePracticeBookWidget from '@/components/SimplePracticeBookWidget'
+import SimplePracticeContactWidget from '@/components/SimplePracticeContactWidget'
 import { useWebsiteValues } from '@/features/website/useWebsiteValues'
+import { useWaitlistOptions } from '@/features/website/useWaitlistOptions'
 
 export const Route = createFileRoute('/')({ component: App })
 
@@ -31,6 +33,7 @@ function formatPhoneNumber(phone: number) {
 
 function App() {
   const websiteValues = useWebsiteValues()
+  const waitlistOptions = useWaitlistOptions()
   const phoneNumber = String(websiteValues.phone)
   const formattedPhoneNumber = formatPhoneNumber(websiteValues.phone)
 
@@ -150,11 +153,35 @@ function App() {
             data-reveal
             style={{ transitionDelay: "280ms" }}
           >
-            <SimplePracticeBookWidget
-              label="Book a Consultation"
-              // className="bg-stone-900 px-6 py-3 text-sm font-semibold text-stone-50 transition hover:bg-stone-700"
-              className="mt-16 inline-flex items-center justify-center border-[3px] border-[#ede8d1] px-8 py-3 text-2xl uppercase tracking-[0.28em] text-[#ede8d1] no-underline transition hover:bg-[#ede8d1] hover:text-[#433b2f] sm:px-14"
-            />
+            {waitlistOptions.isLoading ? (
+              <button
+                type="button"
+                disabled
+                className="mt-8 inline-flex cursor-wait items-center justify-center border-[3px] border-[#ede8d1] px-8 py-3 text-2xl uppercase tracking-[0.28em] text-[#ede8d1] opacity-60 sm:px-14"
+              >
+                Checking availability…
+              </button>
+            ) : waitlistOptions.waitlist_enabled ? (
+              <div className="flex max-w-none flex-col items-center">
+                <span
+                  className="block text-balance text-lg leading-relaxed tracking-[0.025em] text-[#ede8d1] drop-shadow-[0_2px_8px_rgb(22_18_16/55%)] sm:pt-4 sm:text-3xl lg:whitespace-nowrap"
+                  style={{ fontFamily: "maharlika" }}
+                >
+                  {waitlistOptions.waitlist_homepage_message}
+                </span>
+                <SimplePracticeContactWidget
+                  label="Join the Waitlist"
+                  // className="bg-stone-900 px-6 py-3 text-sm font-semibold text-stone-50 transition hover:bg-stone-700"
+                  className="mt-8 inline-flex items-center justify-center border-[3px] border-[#ede8d1] px-8 py-3 text-2xl uppercase tracking-[0.28em] text-[#ede8d1] no-underline transition hover:bg-[#ede8d1] hover:text-[#433b2f] sm:px-14"
+                />
+              </div>
+            ) : (
+              <SimplePracticeBookWidget
+                label="Book a Consultation"
+                // className="bg-stone-900 px-6 py-3 text-sm font-semibold text-stone-50 transition hover:bg-stone-700"
+                className="mt-16 inline-flex items-center justify-center border-[3px] border-[#ede8d1] px-8 py-3 text-2xl uppercase tracking-[0.28em] text-[#ede8d1] no-underline transition hover:bg-[#ede8d1] hover:text-[#433b2f] sm:px-14"
+              />
+            )}
           </div>
         </div>
       </section>
@@ -214,7 +241,7 @@ function App() {
               transitionDelay: "120ms",
             }}
           >
-            you are in the transition between who you once were and who you are
+            You are in the transition between who you once were and who you are
             becoming: when old identities, relationships, beliefs, or directions
             no longer feel right, but the next version of yourself is still
             taking shape.
@@ -229,7 +256,7 @@ function App() {
               transitionDelay: "220ms",
             }}
           >
-            this is a safe space for those moving through divorce,
+            This is a safe space for those moving through divorce,
             deconstruction, heartbreak, career shifts, existential questions,
             and the quiet, persistent search for a life that feels more like
             your own.
@@ -442,7 +469,7 @@ function App() {
                 >
                   {websiteValues.address_line_1}
                   <br />
-                  {websiteValues.city}, {websiteValues.state}{' '}
+                  {websiteValues.city}, {websiteValues.state}{" "}
                   {websiteValues.zip}
                 </address>
               </div>
@@ -456,12 +483,31 @@ function App() {
             >
               I&apos;m Ready
             </a> */}
-            <SimplePracticeBookWidget
-              label="I'm Ready"
+            <div
+              className="scroll-reveal mt-16"
               data-reveal
               style={{ transitionDelay: "360ms" }}
-              className="scroll-reveal mt-16 inline-flex items-center justify-center border-[3px] border-[#ede8d1] px-8 py-3 text-2xl uppercase tracking-[0.28em] text-[#ede8d1] no-underline transition hover:bg-[#ede8d1] hover:text-[#433b2f] sm:px-14"
-            />
+            >
+              {waitlistOptions.isLoading ? (
+                <button
+                  type="button"
+                  disabled
+                  className="inline-flex cursor-wait items-center justify-center border-[3px] border-[#ede8d1] px-8 py-3 text-2xl uppercase tracking-[0.28em] text-[#ede8d1] opacity-60 sm:px-14"
+                >
+                  Checking availability…
+                </button>
+              ) : waitlistOptions.waitlist_enabled ? (
+                <SimplePracticeContactWidget
+                  label="Join the Waitlist"
+                  className="inline-flex items-center justify-center border-[3px] border-[#ede8d1] px-8 py-3 text-2xl uppercase tracking-[0.28em] text-[#ede8d1] no-underline transition hover:bg-[#ede8d1] hover:text-[#433b2f] sm:px-14"
+                />
+              ) : (
+                <SimplePracticeBookWidget
+                  label="I'm Ready"
+                  className="inline-flex items-center justify-center border-[3px] border-[#ede8d1] px-8 py-3 text-2xl uppercase tracking-[0.28em] text-[#ede8d1] no-underline transition hover:bg-[#ede8d1] hover:text-[#433b2f] sm:px-14"
+                />
+              )}
+            </div>
           </div>
 
           <div className="flex items-center justify-center">

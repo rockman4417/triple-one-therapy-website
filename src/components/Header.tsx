@@ -2,13 +2,14 @@ import { Link, useLocation } from '@tanstack/react-router'
 import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import totLogo from '../assets/totlogo.png'
-import SimplePracticeContactWidget from './SimplePracticeContactWidget'
+import totLogo2 from '../assets/logos/logo-2.png';
+import SimplePracticeContactWidget from './SimplePracticeContactWidget';
+import { useWaitlistOptions } from '@/features/website/useWaitlistOptions'
 
-const NAV_ITEMS = [
+const BASE_NAV_ITEMS = [
   { label: 'Home', href: '/', type: 'route' as const },
   { label: 'About Me', href: '/about', type: 'route' as const },
   { label: 'Services', href: '/services', type: 'route' as const },
-  { label: 'Contact Me', type: 'widget' as const },
 ]
 
 function isRouteActive(pathname: string, href: string) {
@@ -21,6 +22,22 @@ function isRouteActive(pathname: string, href: string) {
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
+  const {
+    waitlist_enabled: waitlistEnabled,
+    isLoading: isWaitlistLoading,
+  } = useWaitlistOptions()
+  const navItems = [
+    ...BASE_NAV_ITEMS,
+    {
+      label: isWaitlistLoading
+        ? 'Checking availability…'
+        : waitlistEnabled
+          ? 'Join the Waitlist'
+          : 'Contact Me',
+      type: 'widget' as const,
+      disabled: isWaitlistLoading,
+    },
+  ]
 
   return (
     <>
@@ -30,11 +47,11 @@ export default function Header() {
             to="/"
             className="group flex items-center gap-3 px-1 py-1 transition-opacity hover:opacity-80"
           >
-            <span className="relative inline-flex h-12 w-12 items-center justify-center overflow-hidden rounded-full border border-[#ede8d1]/35 bg-[#ede8d1]/95 shadow-[0_8px_22px_-18px_rgba(15,12,10,0.75)]">
+            <span className="relative inline-flex h-12 w-12 items-center justify-center overflow-hidden">
               <img
-                src={totLogo}
+                src={totLogo2}
                 alt="Triple One Therapy logo"
-                className="relative h-9 w-9 object-contain transition duration-300 group-hover:scale-105"
+                className="relative h-12 w-12 object-contain transition duration-300 group-hover:scale-105"
               />
             </span>
             <span className="leading-tight">
@@ -48,7 +65,7 @@ export default function Header() {
           </Link>
 
           <nav className="hidden items-center gap-8 md:flex">
-            {NAV_ITEMS.map((item) => {
+            {navItems.map((item) => {
               const sharedClasses =
                 'relative py-2 text-sm uppercase tracking-[0.22em] transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-center after:scale-x-0 after:bg-current after:transition-transform after:duration-200'
               const activeClasses =
@@ -58,6 +75,19 @@ export default function Header() {
                   : 'text-[#e0d4c3] hover:text-[#fff8ec] hover:after:scale-x-100'
 
               if (item.type === 'widget') {
+                if (item.disabled) {
+                  return (
+                    <button
+                      key={item.label}
+                      type="button"
+                      disabled
+                      className={`${sharedClasses} ${activeClasses} cursor-wait opacity-65`}
+                    >
+                      {item.label}
+                    </button>
+                  )
+                }
+
                 return (
                   <SimplePracticeContactWidget
                     key={item.label}
@@ -128,7 +158,7 @@ export default function Header() {
           </button>
         </div>
         <nav className="flex flex-col gap-2">
-          {NAV_ITEMS.map((item) => {
+          {navItems.map((item) => {
             const classes =
               item.type === 'route' &&
               isRouteActive(location.pathname, item.href)
@@ -136,6 +166,19 @@ export default function Header() {
               : 'rounded-xl border border-transparent px-4 py-3 text-sm font-medium text-stone-50 hover:border-stone-300 hover:bg-stone-200/70'
 
             if (item.type === 'widget') {
+              if (item.disabled) {
+                return (
+                  <button
+                    key={item.label}
+                    type="button"
+                    disabled
+                    className={`text-left ${classes} cursor-wait opacity-65`}
+                  >
+                    {item.label}
+                  </button>
+                )
+              }
+
               return (
                 <SimplePracticeContactWidget
                   key={item.label}
