@@ -11,7 +11,10 @@ export const Route = createFileRoute('/services')({ component: ServicesPage })
 
 function ServicesPage() {
   const { hourly_rate: hourlyRate } = useWebsiteValues()
-  const { waitlist_enabled: waitlistEnabled } = useWaitlistOptions()
+  const {
+    waitlist_enabled: waitlistEnabled,
+    isLoading: isWaitlistLoading,
+  } = useWaitlistOptions()
 
    useEffect(() => {
     const hash = window.location.hash.replace('#', '')
@@ -227,7 +230,15 @@ function ServicesPage() {
               >
                 I currently accept United Healthcare, Aetna, Cigna, and BCBS.
               </p>
-              {waitlistEnabled ? (
+              {isWaitlistLoading ? (
+                <button
+                  type="button"
+                  disabled
+                  className="mt-16 inline-flex cursor-wait items-center justify-center border-[3px] border-black px-8 py-3 text-base uppercase tracking-[0.35em] text-black opacity-55 sm:px-10"
+                >
+                  Checking availability…
+                </button>
+              ) : waitlistEnabled ? (
                 <SimplePracticeContactWidget
                   label="Join the Waitlist"
                   className="mt-16 inline-flex items-center justify-center border-[3px] border-black px-8 py-3 text-base uppercase tracking-[0.35em] text-black transition hover:bg-black hover:text-[#ede8d1] sm:px-10"

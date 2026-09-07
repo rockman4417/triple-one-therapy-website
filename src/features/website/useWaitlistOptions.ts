@@ -10,14 +10,18 @@ export function useWaitlistOptions() {
   const [options, setOptions] = useState<WaitlistOptions>(
     WAITLIST_OPTIONS_FALLBACK,
   )
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     return subscribeToWaitlistOptions(
-      setOptions,
-      () => undefined,
-      () => undefined,
+      (nextOptions) => {
+        setOptions(nextOptions)
+        setIsLoading(false)
+      },
+      () => setIsLoading(false),
+      () => setIsLoading(false),
     )
   }, [])
 
-  return options
+  return { ...options, isLoading }
 }
